@@ -173,14 +173,14 @@ int main(int argc, char **argv)
                           TheFile,CategoryArgs);
 
       // Trg eff. 
-      /*
+
       std::cout<<"Trigger eff"<<std::endl;
-      AddShapesIfNotEmpty({"CMS_doubletautrg_2017"},
+      AddShapesIfNotEmpty({"CMS_doubletautrg_dm0_2017","CMS_doubletautrg_dm1_2017","CMS_doubletautrg_dm10_2017","CMS_doubletautrg_dm11_2017"},
                           JoinStr({ggH_STXS,qqH_STXS,{"VVL","STL","TTL","ZL","WH_htt125","ZH_htt125"}}),
                           &cb,
                           1.00,
                           TheFile,CategoryArgs);
-      */
+
 
       //Fake factors
       std::cout<<"Fake factors"<<std::endl;
@@ -239,7 +239,7 @@ int main(int argc, char **argv)
 	  AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_0jet_2017","CMS_htt_boson_scale_met_0jet_2017",
 		"CMS_htt_boson_reso_met_1jet_2017","CMS_htt_boson_scale_met_1jet_2017",
 		"CMS_htt_boson_reso_met_2jet_2017","CMS_htt_boson_scale_met_2jet_2017"},
-	    JoinStr({ggH_STXS,qqH_STXS,{"ZT","ZL"}}),
+	    JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
 	    &cb,
 	    1.00,
 	    TheFile,CategoryArgs);
@@ -292,7 +292,6 @@ int main(int argc, char **argv)
                           1.00,
                           TheFile,CategoryArgs);
 
-      // JES
       std::cout<<"JES"<<std::endl;
       AddShapesIfNotEmpty({"CMS_JetAbsolute","CMS_JetAbsolute_2017","CMS_JetBBEC1","CMS_JetBBEC1_2017","CMS_JetEC2","CMS_JetEC2_2017",
 	    "CMS_JetFlavorQCD","CMS_JetHF","CMS_JetHF_2017","CMS_JetRelativeSample_2017","CMS_JetRelativeBal"},
@@ -300,27 +299,6 @@ int main(int argc, char **argv)
 	&cb,
 	1.000,
 	TheFile,CategoryArgs);
-      /*
-      AddShapesIfNotEmpty({"CMS_JetEta3to5_2017","CMS_JetEta0to5_2017",
-            "CMS_JetEta0to3_2017","CMS_JetRelativeBal_2017"},
-        JoinStr({ggH_STXS,qqH_STXS,{"ZT","VVT","STT","TTT","WH_htt125","ZH_htt125","VVL","STL","ZL","TTL"}}),
-        &cb,
-        0.707,
-        TheFile,CategoryArgs);
-
-      AddShapesIfNotEmpty({"CMS_JetEta3to5","CMS_JetEta0to5",
-            "CMS_JetEta0to3","CMS_JetRelativeBal"},
-        JoinStr({ggH_STXS,qqH_STXS,{"ZT","VVT","STT","TTT","WH_htt125","ZH_htt125","VVL","STL","ZL","TTL"}}),
-        &cb,
-        0.707,
-        TheFile,CategoryArgs);
-
-      AddShapesIfNotEmpty({"CMS_JetEC2_2017"},
-			  JoinStr({ggH_STXS,qqH_STXS,{"ZT","VVT","STT","TTT","WH_htt125","ZH_htt125","VVL","STL","ZL","TTL"}}),
-        &cb,
-        1.000,
-        TheFile,CategoryArgs);
-      */
 
       //JER      
       AddShapesIfNotEmpty({"CMS_JER_2017"},
@@ -328,7 +306,6 @@ int main(int argc, char **argv)
 			  &cb,
 			  1.000,
 			  TheFile,CategoryArgs);
-
       //ggH Theory Uncertainties
       std::cout<<"ggH Theory"<<std::endl;
       AddShapesIfNotEmpty({"THU_ggH_Mu","THU_ggH_Res","THU_ggH_Mig01","THU_ggH_Mig12","THU_ggH_VBF2j",
@@ -346,7 +323,7 @@ int main(int argc, char **argv)
 	&cb,
 	1.00,
 	TheFile,CategoryArgs);
-
+      
     }
 
 
@@ -355,17 +332,19 @@ int main(int argc, char **argv)
   //*****************************************************************
   if(not Input.OptionExists("-e"))
     {      
-      //Tau ID eff
+       //Tau ID eff
       //cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_2017", "lnN", SystMap<>::init(1.040));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm0_2017", "shape", SystMap<>::init(1.000));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm1_2017", "shape", SystMap<>::init(1.000));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm10_2017", "shape", SystMap<>::init(1.000));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm11_2017", "shape", SystMap<>::init(1.000));
 
       //cb.cp().process({"embedded"}).AddSyst(cb,"CMS_1ProngPi0Eff","lnN",ch::syst::SystMapAsymm<>::init(0.9934,1.011));
       //cb.cp().process({"embedded"}).AddSyst(cb,"CMS_3ProngEff","lnN",ch::syst::SystMapAsymm<>::init(0.969,1.005));
 
       cb.cp().process({"embedded"}).AddSyst(cb,"CMS_htt_doublemutrg_2017", "lnN", SystMap<>::init(1.04));
+      // Tau ID eff
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm0_2017", "shape", SystMap<>::init(1.000));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm1_2017", "shape", SystMap<>::init(1.000));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm10_2017", "shape", SystMap<>::init(1.000));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm11_2017", "shape", SystMap<>::init(1.000));
+
 
       // TTBar Contamination
       cb.cp().process({"embedded"}).AddSyst(cb,"CMS_htt_emb_ttbar_2017", "shape", SystMap<>::init(1.00));
@@ -382,9 +361,15 @@ int main(int argc, char **argv)
       cb.cp().process({"embedded"}).AddSyst(cb,"CMS_scale_t_3prong1pizero_2017", "shape", SystMap<>::init(0.500));
 
       //Trigger Uncertainty
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_2017","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm0_2017","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm0_2017","shape",SystMap<>::init(0.500));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm1_2017","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm1_2017","shape",SystMap<>::init(0.500));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm10_2017","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm10_2017","shape",SystMap<>::init(0.500));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm11_2017","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm11_2017","shape",SystMap<>::init(0.500));
 
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_2017","shape",SystMap<>::init(0.500));
     }
 
   //********************************************************************************************************************************                          

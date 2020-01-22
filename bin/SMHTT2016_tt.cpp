@@ -33,7 +33,7 @@ int main(int argc, char **argv)
 
   //keep a handle on the file, we need it to check if shapes are empty.
   TFile* TheFile;
-  if(Input.OptionExists("-c"))TheFile = new TFile((aux_shapes+"tt_controls_2016.root").c_str());
+  if (Input.OptionExists("-c")) TheFile = new TFile((aux_shapes+"tt_controls_2016.root").c_str());
   else TheFile= new TFile((aux_shapes+"smh2016tt.root").c_str());
 
   //categories loaded from configurations
@@ -171,30 +171,16 @@ int main(int argc, char **argv)
                           TheFile,CategoryArgs);
 
       // Trg eff. 
-      /*
       std::cout<<"Trigger eff"<<std::endl;
-      AddShapesIfNotEmpty({"CMS_doubletautrg_2016"},
+      AddShapesIfNotEmpty({"CMS_doubletautrg_dm0_2016","CMS_doubletautrg_dm1_2016","CMS_doubletautrg_dm10_2016","CMS_doubletautrg_dm11_2016"},
                           JoinStr({ggH_STXS,qqH_STXS,{"VVL","STL","TTL","ZL","WH_htt125","ZH_htt125"}}),
                           &cb,
                           1.00,
                           TheFile,CategoryArgs);
-      */
+
 
       //Fake factors
       std::cout<<"Fake factors"<<std::endl;
-      /*
-	AddShapesIfNotEmpty({"CMS_rawFF_tt_qcd_0jet_2016",
-	    "CMS_rawFF_tt_qcd_1jet_2016",
-	    "CMS_rawFF_tt_qcd_2jet_2016",
-	    "CMS_FF_closure_tau2pt_tt_qcd_0jet",
-	    "CMS_FF_closure_tau2pt_tt_qcd_1jet",
-	    "CMS_FF_closure_tau2pt_tt_qcd_2jet"},
-	{"jetFakes"},
-	&cb,
-	1.00,
-	TheFile,
-	CategoryArgs);
-      */
       if(Input.OptionExists("-c"))
 	{
 	  AddShapesIfNotEmpty({"CMS_rawFF_tt_qcd_0jet_2016",
@@ -244,37 +230,41 @@ int main(int argc, char **argv)
                           1.00,
                           TheFile,CategoryArgs);
 
-      //Recoil Shapes:                  
-      std::cout<<"Recoil shapes"<<std::endl;
-      AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_0jet_2016","CMS_htt_boson_scale_met_0jet_2016"},
-			  JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
-			  &cb,
-			  1.00,
-			  TheFile,
-			  {"tt_0jet"});
-      
-      AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_1jet_2016","CMS_htt_boson_scale_met_1jet_2016"},
-			  JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
-			  &cb,
-			  1.00,
-			  TheFile,
-			  {"tt_boosted_onejet"});
+      //Recoil Shapes:             
+      if (Input.OptionExists("-c"))
+	{
+	  AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_0jet_2016","CMS_htt_boson_scale_met_0jet_2016",
+		"CMS_htt_boson_reso_met_1jet_2016","CMS_htt_boson_scale_met_1jet_2016",
+		"CMS_htt_boson_reso_met_2jet_2016","CMS_htt_boson_scale_met_2jet_2016"},
+	    JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
+	    &cb,
+	    1.00,
+	    TheFile,CategoryArgs);
+	}
+      else {
+	std::cout<<"Recoil shapes"<<std::endl;
+	AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_0jet_2016","CMS_htt_boson_scale_met_0jet_2016"},
+			    JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
+			    &cb,
+			    1.00,
+			    TheFile,
+			    {"tt_0jet"});
+	
+	AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_1jet_2016","CMS_htt_boson_scale_met_1jet_2016"},
+			    JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
+			    &cb,
+			    1.00,
+			    TheFile,
+			    {"tt_boosted_onejet"});
+	
+	AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_2jet_2016","CMS_htt_boson_scale_met_2jet_2016"},
+			    JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
+			    &cb,
+			    1.00,
+			    TheFile,
+			    {"tt_boosted_multijet","tt_vbf_highHpT","tt_vbf_lowHpT"});
+      }
 
-      AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_2jet_2016","CMS_htt_boson_scale_met_2jet_2016"},
-			  JoinStr({ggH_STXS,qqH_STXS,{"ZL"}}),
-			  &cb,
-			  1.00,
-			  TheFile,
-			  {"tt_boosted_multijet","tt_vbf_highHpT","tt_vbf_lowHpT"});
-      /*
-      AddShapesIfNotEmpty({"CMS_htt_boson_reso_met_0jet_2016","CMS_htt_boson_scale_met_0jet_2016",
-            "CMS_htt_boson_reso_met_1jet_2016","CMS_htt_boson_scale_met_1jet_2016",
-            "CMS_htt_boson_reso_met_2jet_2016","CMS_htt_boson_scale_met_2jet_2016"},
-	    JoinStr({ggH_STXS,qqH_STXS,{"ZT","ZL"}}),
-        &cb,
-        1.00,
-        TheFile,CategoryArgs);
-      */
 
       //ZPT Reweighting Shapes:      
       std::cout<<"ZPT Reweighting"<<std::endl;
@@ -308,27 +298,7 @@ int main(int argc, char **argv)
 	&cb,
 	1.000,
 	TheFile,CategoryArgs);
-      /*
-      AddShapesIfNotEmpty({"CMS_JetEta3to5_2016","CMS_JetEta0to5_2016",
-      "CMS_JetEta0to3_2016","CMS_JetRelativeBal_2016"},
-      JoinStr({ggH_STXS,qqH_STXS,{"ZT","VVT","STT","TTT","WH_htt125","ZH_htt125","VVL","STL","ZL","TTL"}}),
-        &cb,
-        0.707,
-        TheFile,CategoryArgs);
 
-	AddShapesIfNotEmpty({"CMS_JetEta3to5","CMS_JetEta0to5",
-            "CMS_JetEta0to3","CMS_JetRelativeBal"},
-        JoinStr({ggH_STXS,qqH_STXS,{"ZT","VVT","STT","TTT","WH_htt125","ZH_htt125","VVL","STL","ZL","TTL"}}),
-        &cb,
-        0.707,
-        TheFile,CategoryArgs);
-
-      AddShapesIfNotEmpty({"CMS_JetEC2_2016"},
-			  JoinStr({ggH_STXS,qqH_STXS,{"ZT","VVT","STT","TTT","WH_htt125","ZH_htt125","VVL","STL","ZL","TTL"}}),
-        &cb,
-        1.000,
-        TheFile,CategoryArgs);
-      */
 
       //JER
       std::cout<<"JER"<<std::endl;
@@ -366,11 +336,7 @@ int main(int argc, char **argv)
     {      
  
       //Tau ID eff
-      //cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_2016", "lnN", SystMap<>::init(1.040));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm0_2016", "shape", SystMap<>::init(1.000));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm1_2016", "shape", SystMap<>::init(1.000));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm10_2016", "shape", SystMap<>::init(1.000));
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_dm11_2016", "shape", SystMap<>::init(1.000));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_t_embedded_2016", "lnN", SystMap<>::init(1.040));
 
       //cb.cp().process({"embedded"}).AddSyst(cb,"CMS_1ProngPi0Eff","lnN",ch::syst::SystMapAsymm<>::init(0.9934,1.011));
       //cb.cp().process({"embedded"}).AddSyst(cb,"CMS_3ProngEff","lnN",ch::syst::SystMapAsymm<>::init(0.969,1.005));
@@ -392,22 +358,42 @@ int main(int argc, char **argv)
       cb.cp().process({"embedded"}).AddSyst(cb,"CMS_scale_t_3prong1pizero_2016", "shape", SystMap<>::init(0.500));
 
       //Trigger Uncertainty
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_2016","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm0_2016","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm0_2016","shape",SystMap<>::init(0.500));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm1_2016","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm1_2016","shape",SystMap<>::init(0.500));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm10_2016","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm10_2016","shape",SystMap<>::init(0.500));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_emb_dm11_2016","shape",SystMap<>::init(0.866));
+      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_dm11_2016","shape",SystMap<>::init(0.500));
 
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_doubletautrg_2016","shape",SystMap<>::init(0.500));
 
     }
 
   //********************************************************************************************************************************                          
 
-  cb.cp().backgrounds().ExtractShapes(
-      aux_shapes + "smh2016tt.root",
-      "$BIN/$PROCESS",
-      "$BIN/$PROCESS_$SYSTEMATIC");
-  cb.cp().signals().ExtractShapes(
-      aux_shapes + "smh2016tt.root",
-      "$BIN/$PROCESS$MASS",
-      "$BIN/$PROCESS$MASS_$SYSTEMATIC");
+  if (Input.OptionExists("-c"))
+    {
+      cb.cp().backgrounds().ExtractShapes(
+					  aux_shapes + "tt_controls_2016.root",
+					  "$BIN/$PROCESS",
+					  "$BIN/$PROCESS_$SYSTEMATIC");
+      cb.cp().signals().ExtractShapes(
+				      aux_shapes + "tt_controls_2016.root",
+				      "$BIN/$PROCESS$MASS",
+				      "$BIN/$PROCESS$MASS_$SYSTEMATIC");
+    }
+  else
+    {
+      cb.cp().backgrounds().ExtractShapes(
+					  aux_shapes + "smh2016tt.root",
+					  "$BIN/$PROCESS",
+					  "$BIN/$PROCESS_$SYSTEMATIC");
+      cb.cp().signals().ExtractShapes(
+				      aux_shapes + "smh2016tt.root",
+				      "$BIN/$PROCESS$MASS",
+				      "$BIN/$PROCESS$MASS_$SYSTEMATIC");
+    }
   //! [part7]
 
   //! [part8]

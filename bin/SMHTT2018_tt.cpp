@@ -157,13 +157,6 @@ int main(int argc, char **argv)
       std::cout<<"Adding Shapes..."<<std::endl;
       //uses custom defined utility function that only adds the shape if at least one shape inside is not empty.
 
-      // Prefiring
-      AddShapesIfNotEmpty({"CMS_prefiring"},
-                          JoinStr({sig_procs,{"VVL","STL","ZL","TTL"}}),
-                          &cb,
-                          1.00,
-                          TheFile,CategoryArgs);
-
       // Tau ID eff in DM bins
       std::cout<<"Tau ID eff"<<std::endl;
       AddShapesIfNotEmpty({"CMS_tauideff_dm0_2018","CMS_tauideff_dm1_2018","CMS_tauideff_dm10_2018","CMS_tauideff_dm11_2018"},

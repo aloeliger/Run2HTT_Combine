@@ -943,8 +943,8 @@ int main(int argc, char **argv)
 	}
 	  
       // JES
-      AddShapesIfNotEmpty({"CMS_JetAbsolute","CMS_JetAbsolute_2016","CMS_JetBBEC1","CMS_JetBBEC1_2016","CMS_JetEC2","CMS_JetEC2_2016",
-	    "CMS_JetFlavorQCD","CMS_JetHF","CMS_JetHF_2016","CMS_JetRelativeBal"},
+      AddShapesIfNotEmpty({"CMS_scale_j_Absolute","CMS_scale_j_Absolute_2016","CMS_scale_j_BBEC1","CMS_scale_j_BBEC1_2016","CMS_scale_j_EC2","CMS_scale_j_EC2_2016",
+	    "CMS_scale_j_FlavorQCD","CMS_scale_j_HF","CMS_scale_j_HF_2016","CMS_scale_j_RelativeBal"},
 	JoinStr({sig_procs,{"ZT","TTT","VVT","STT","ggH_htt_nonfid125","qqH_htt_nonfid125","WH_htt_nonfid125","ZH_htt_nonfid125"}}),
 	&cb,
 	1.000,
@@ -954,7 +954,7 @@ int main(int argc, char **argv)
       std::cout<<"JER"<<std::endl;
       if(Input.OptionExists("-dm")||Input.OptionExists("-dn")||Input.OptionExists("-dp")||Input.OptionExists("-dljpt"))
 	{
-	  AddShapesIfNotEmpty({"CMS_JER_2016"},
+	  AddShapesIfNotEmpty({"CMS_res_j_2016"},
 			      JoinStr({sig_procs,{"ZT","VVT","STL","STT","TTT","VVL","ggH_htt_nonfid125","qqH_htt_nonfid125","WH_htt_nonfid125","ZH_htt_nonfid125"}}),
 			      &cb,
 			      1.000,
@@ -962,13 +962,13 @@ int main(int argc, char **argv)
 	}
       else
 	{
-	  AddShapesIfNotEmpty({"CMS_JER_2016"},
+	  AddShapesIfNotEmpty({"CMS_res_j_2016"},
 			      JoinStr({sig_procs,{"ZT","VVT","STL","STT","TTT","VVL","ggH_htt_nonfid125","qqH_htt_nonfid125","WH_htt_nonfid125","ZH_htt_nonfid125"}}),
 			      &cb,
 			      1.000,
 			      TheFile,{"et_0jet","et_boosted1","et_boosted2"});
 	  
-	  AddShapesIfNotEmpty({"CMS_JER_2016"},
+	  AddShapesIfNotEmpty({"CMS_res_j_2016"},
 			      JoinStr({sig_procs,{"ZT","TTT","ggH_htt_nonfid125","qqH_htt_nonfid125","WH_htt_nonfid125","ZH_htt_nonfid125"}}),
 			      &cb,
 			      1.000,

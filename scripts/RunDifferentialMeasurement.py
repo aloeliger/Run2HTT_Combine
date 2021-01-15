@@ -27,6 +27,7 @@ parser.add_argument('--Unblind',help="Unblind the analysis, and do it for real. 
 parser.add_argument('--DontPrintResults',help='For use in unblinding carefully. Doesn\'t print the acutal results to screen or draw them on any plots',action="store_true")
 parser.add_argument('--ComputeImpacts',help="Compute expected impacts on POIs",action="store_true")
 parser.add_argument('--useRecoSignals',help="Use \"reco\" signals isntead of gen based ones in the measurement",action="store_true")
+parser.add_argument('--useFastMinimizer',help='Implements --cminDefaultMinimizerStrategy=0 in main measurements',action="store_true")
 
 args = parser.parse_args()
 
@@ -241,6 +242,8 @@ for parameter in parametersToMeasure:
     MeasurementCommand = "combineTool.py -M MultiDimFit "+WorkspaceName+"  --robustFit=1 --X-rtd MINIMIZER_analytic --X-rtd FAST_VERTICAL_MORPH --algo=singles --cl=0.68 -n "+DateTag+"_"+args.MeasurementType
     if not args.Unblind:
         MeasurementCommand+=" -t -1"
+    if args.useFastMinimizer:
+        MeasurementCommand+=' --cminDefaultMinimizerStrategy=0 '
     MeasurementCommand+=" --setParameters "
     for parameterName in parametersToMeasure:
         MeasurementCommand+=parameterName+"=1,"

@@ -28,6 +28,7 @@ parser.add_argument('--DontPrintResults',help='For use in unblinding carefully. 
 parser.add_argument('--ComputeImpacts',help="Compute expected impacts on POIs",action="store_true")
 parser.add_argument('--useRecoSignals',help="Use \"reco\" signals isntead of gen based ones in the measurement",action="store_true")
 parser.add_argument('--useFastMinimizer',help='Implements --cminDefaultMinimizerStrategy=0 in main measurements',action="store_true")
+parser.add_argument('--setParameterRanges',help='pass setParameterRanges command',default=None)
 
 args = parser.parse_args()
 
@@ -248,6 +249,8 @@ for parameter in parametersToMeasure:
     for parameterName in parametersToMeasure:
         MeasurementCommand+=parameterName+"=1,"
     MeasurementCommand+= " -P "+parameter+" --floatOtherPOIs=1"
+    if args.setParameterRanges != None:
+        MeasurementCommand += ' --setParameterRanges ' + args.setParameterRanges
 
     if not args.ComputeGOF:
        logging.info("Measurement Command:")

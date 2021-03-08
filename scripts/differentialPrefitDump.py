@@ -7,6 +7,85 @@ import CombineHarvester.Run2HTT_Combine.PlottingModules.prefitPostfitSettings.ra
 import os
 from array import array
 
+#bins versus width
+#1:1
+#2:1
+#3:1
+#4:1
+#5:1
+#6:1
+#7:2
+#8:2
+#9:2
+
+
+#we need a way to figure out the rebinning scheme without having to rely on me doing this by hand
+#the way the auto-rebinning threshold works is that it starts at the maximum bin, then goes left, merging bins toward the maximum
+#then repeats it going right
+#so what we do here is this
+#we start in a slice, and find the maximum bin of the slice and its index
+#then we look at all the leftward bins
+#if we find any that are zero, we merge them into the nearest available rightward bin, keeping track of the new width of that bin
+# then vice versa going right
+
+def determineNewBinWidths(histograms):
+    theDataHistogram = histograms['data']
+    nBins = theDataHistogram.GetN()/9    
+    if theDataHistogram.GetN()%9 != 0:
+        nBins+=1
+    rebinningDict = {}
+    print(list(theDataHistogram.GetY()))
+    print(len(list(theDataHistogram.GetY())))
+    for majorBin in range(0,nBins):
+        #let's find the maximum of this binning
+        maximumContent = 0
+        maximumIndex = 0
+        for subBin in range(1,10):
+            print(majorBin*9+subBin-1)
+            theContent = theDataHistogram.GetY()[majorBin*9+subBin-1]
+            if theContent  > maximumContent:
+                maximumContent = theContent
+                maximumIndex = subBin
+        #okay, now that we have the maximum index, let's start there and go left, looking for zero bins
+        for i in range(1,maximumIndex):
+            subBin = maximumIndex-i
+            if theDataHistogram.GetY()[majorBin*9+subBin-1] == 0:
+                #okay, now we have an empty bin. Merge it into the nearest available rightward bin
+                for j in range(subBin,maximumIndex+1):
+                    globalBinNum = majorBin*9+j
+                    if theDataHistogram.GetY()[globalBinNum-1] != 0:
+                        #we have the bin we want to merge it into
+                        #if the bin is not in the rebinning dictionary, add it and its nominal width
+                        if globalBinNum not in rebinningDict.keys():
+                            if (j % 9) in [1,2,3,4,5,6]:
+                                rebinningDict[globalBinNum] = 1
+                            else:
+                                rebinningDict[globalBinNum] = 2
+                        #add this bin's width to it.
+                        if subBin % 9 in [1,2,3,4,5,6]:
+                            rebinningDict[globalBinNum] += 1
+                        else:
+                            rebinningDict[globalBinNum] += 2
+                        break
+        #now we go right and look for bins that need merging
+        for subBin in range(maximumIndex+1,10):
+            if theDataHistogram.GetY()[majorBin*9+subBin-1] == 0:
+                #we have an empty bin, merge it into the nearest available leftward bin
+                for j in range(maximumIndex+1,subBin):
+                    globalBinNum = majorBin*9+j
+                    if theDataHistogram.GetY()[globalBinNum-1]!=0:
+                        if globalBinNum not in rebinningDict.keys():
+                            if (j % 9) in [1,2,3,4,5,6]:
+                                rebinningDict[globalBinNum] = 1
+                            else:
+                                rebinningDict[globalBinNum] = 2
+                        #add this bin's width to it.
+                        if subBin % 9 in [1,2,3,4,5,6]:
+                            rebinningDict[globalBinNum] += 1
+                        else:
+                            rebinningDict[globalBinNum] += 2
+                        break
+    return rebinningDict
 
 #accumulated width
 #0-1: 50-70
@@ -154,6 +233,9 @@ parser.add_argument('--prefitOrPostfit',nargs='?',choices=['prefit','postfit'],h
 parser.add_argument('--pause',action='store_true',help='pause after every histogram made')
 parser.add_argument('--unblind',action='store_true',help='unblind the datapoints in each histogram')
 parser.add_argument('--lowerPad',nargs='?',choices=['ratio','signal'],help='Choose ratio or (obs-bkg)/err plot for the lower pad',default='ratio')
+parser.add_argument('--drawChannel',nargs='?',choices=['em','et','mt','tt'],help='Choose channel to be drawn')
+parser.add_argument('--drawYear',nargs='?',choices=['2016','2017','2018'],help='Choose the year to be drawn')
+parser.add_argument('--drawCategory',nargs='?',choices=['LowTauPt','IntermediateTauPt','HighTauPt'],help='choose the category to be drawn')
 
 args = parser.parse_args()
 theFile = ROOT.TFile(args.theFile)
@@ -198,6 +280,25 @@ for directory in categoryDirectory.GetListOfKeys():
         year = '2017'
     elif '2018' in theDirectory.GetName():
         year = '2018'
+        
+    if args.drawChannel != None:
+        if args.drawChannel != channel:
+            continue
+
+    if args.drawYear != None:
+        if args.drawYear != year:
+            continue
+
+        # 
+    print(channel)
+    category=''
+    if channel == 'mt' or channel == 'et' or channel == 'tt':
+        category = re.search('[a-z,A-Z]*$',theDirectory.GetName()).group(0)
+    print(category)
+
+    if args.drawCategory != None:
+        if args.drawCategory != category:
+            continue
 
     #let's get all the histograms required.
     print('Getting embedded and jet fakes...')
@@ -313,13 +414,6 @@ for directory in categoryDirectory.GetListOfKeys():
     histograms['other'] = othersHistogram    
 
     print('Getting the data...')
-    # 
-    print(channel)
-    category=''
-    if channel == 'mt' or channel == 'et' or channel == 'tt':
-        category = re.search('[a-z,A-Z]*$',theDirectory.GetName()).group(0)
-    print(category)
-
     #we use this for proper Poisson Error Drawing
     dataGraph = theDirectory.Get("data")    
     """
@@ -337,6 +431,8 @@ for directory in categoryDirectory.GetListOfKeys():
     histograms['total'] = theDirectory.Get('total')
 
     #REBINNING HERE
+    print(list(histograms['data'].GetY()))
+    print(len(list(histograms['data'].GetY())))
     rebinScheme = []
     if args.measurementType == 'pth':
         if channel == 'et':
@@ -357,15 +453,25 @@ for directory in categoryDirectory.GetListOfKeys():
         elif channel == 'tt':
             if category == 'LowTauPt':
                 if year == '2016': 
-                    rebinScheme = rebinHistogram(histograms,7,{61:2})
+                    rebinScheme = rebinHistogram(histograms,7,{49:2,56:8})
                 elif year == '2017':
-                    rebinScheme = rebinHistogram(histograms,7,{60:2})
+                    rebinScheme = rebinHistogram(histograms,7,{58:9})
                 else:
-                    rebinScheme = rebinHistogram(histograms,7)
+                    rebinScheme = rebinHistogram(histograms,7,{58:3,59:6})
             elif category == 'IntermediateTauPt':
-                rebinScheme = rebinHistogram(histograms,7)
+                if year == '2016':
+                    rebinScheme = rebinHistogram(histograms,7,{50:2,53:3,56:2,59:4})
+                elif year == '2017':
+                    rebinScheme = rebinHistogram(histograms,7,{61:6})
+                else:
+                    rebinScheme = rebinHistogram(histograms,7,{61:4})
             elif category == 'HighTauPt':
-                rebinScheme = rebinHistogram(histograms,6)
+                if year == '2016':
+                    rebinScheme = rebinHistogram(histograms,6,{4:3,8:2,45:2,47:3})
+                elif year == '2017':
+                    rebinScheme = rebinHistogram(histograms,6,{1:2,44:3,49:3})
+                else:
+                    rebinScheme = rebinHistogram(histograms,6,{1:2,44:3})
         else:
             rebinScheme = rebinHistogram(histograms,7)
                 
@@ -394,15 +500,31 @@ for directory in categoryDirectory.GetListOfKeys():
             elif category == 'HighTauPt':
                 rebinScheme = rebinHistogram(histograms,5,{1:3})
         elif channel == 'tt':
-            if category == 'LowTauPt' or  category == 'IntermediateTauPt':
-                rebinScheme = rebinHistogram(histograms,5)
-            elif category == 'HighTauPt':
-                if year == '2016' or year == '2017':
-                    rebinScheme = rebinHistogram(histograms,5,{5:2})
-                elif year == '2018':
-                    rebinScheme = rebinHistogram(histograms,5,{1:2,4:3})
+            
+            if category == 'LowTauPt' :
+                if year == '2016':
+                    rebinScheme = rebinHistogram(histograms,4)
+                elif year == '2017':
+                    rebinScheme = rebinHistogram(histograms,4)
+                else:
+                    rebinScheme = rebinHistogram(histograms,4)
+            elif category == 'IntermediateTauPt':
+                if year == '2016' :
+                    rebinScheme = rebinHistogram(histograms,4)
+                elif year == '2017':
+                    rebinScheme = rebinHistogram(histograms,4)
+                else:
+                    rebinScheme = rebinHistogram(histograms,4)
+            else:
+                if year == '2016' :
+                    rebinScheme = rebinHistogram(histograms,4)
+                elif year == '2017':
+                    rebinScheme = rebinHistogram(histograms,4)
+                else:
+                    rebinScheme = rebinHistogram(histograms,4)
         else:
             rebinScheme = rebinHistogram(histograms,5)
+            
     elif args.measurementType == 'ljpt':        
         if channel == 'et':
             if category == 'HighTauPt':
@@ -428,15 +550,27 @@ for directory in categoryDirectory.GetListOfKeys():
             else:
                 rebinScheme = rebinHistogram(histograms,6)
         elif channel == 'tt':
-            if category == 'HighTauPt':
+            if category == 'LowTauPt':
                 if year == '2016':
-                    rebinScheme = rebinHistogram(histograms,6,{1:2,46:2})
+                    rebinScheme = rebinHistogram(histograms,5)
                 elif year == '2017':
-                    rebinScheme = rebinHistogram(histograms,6,{46:2})
-                elif year == '2018':
-                    rebinScheme = rebinHistogram(histograms,6,{46:2,49:3})
+                    rebinScheme = rebinHistogram(histograms,5)
+                else:
+                    rebinScheme = rebinHistogram(histograms,5)
+            elif category == 'IntermediateTauPt':
+                if year == '2016':
+                    rebinScheme = rebinHistogram(histograms,5)
+                elif year == '2017':
+                    rebinScheme = rebinHistogram(histograms,5)
+                else:
+                    rebinScheme = rebinHistogram(histograms,5)
             else:
-                rebinScheme = rebinHistogram(histograms,6)
+                if year == '2016':
+                    rebinScheme = rebinHistogram(histograms,5,{1:3,3:2,})
+                elif year == '2017':
+                    rebinScheme = rebinHistogram(histograms,5,{1:2,})
+                else:
+                    rebinScheme = rebinHistogram(histograms,5,{1:2,})
         else:
             rebinScheme = rebinHistogram(histograms,6)
     rebinArray = array('f', rebinScheme)
@@ -620,11 +754,18 @@ for directory in categoryDirectory.GetListOfKeys():
             latex.DrawLatex(6+60,verticalLocation,'350<p_{t}^{H}<450')
             latex.DrawLatex(6+72,verticalLocation,'450<p_{t}^{H}')
     if args.measurementType == 'njets':        
-        latex.DrawLatex(6,verticalLocation,'N_{Jets}=0')
-        latex.DrawLatex(6+12,verticalLocation,'N_{Jets}=1')
-        latex.DrawLatex(6+24,verticalLocation,'N_{Jets}=2')
-        latex.DrawLatex(6+36,verticalLocation,'N_{Jets}=3')
-        latex.DrawLatex(6+48,verticalLocation,'N_{Jets}#geq4')
+        if channel == 'tt':
+            latex.DrawLatex(6,verticalLocation,'N_{Jets}=1')
+            latex.DrawLatex(6+12,verticalLocation,'N_{Jets}=2')
+            latex.DrawLatex(6+24,verticalLocation,'N_{Jets}=3')
+            latex.DrawLatex(6+36,verticalLocation,'N_{Jets}#geq4')
+        else:
+            latex.DrawLatex(6,verticalLocation,'N_{Jets}=0')
+            latex.DrawLatex(6+12,verticalLocation,'N_{Jets}=1')
+            latex.DrawLatex(6+24,verticalLocation,'N_{Jets}=2')
+            latex.DrawLatex(6+36,verticalLocation,'N_{Jets}=3')
+            latex.DrawLatex(6+48,verticalLocation,'N_{Jets}#geq4')
+
     if args.measurementType == 'ljpt':
         if channel == 'tt':
             latex.DrawLatex(6,verticalLocation,'30<p_{t}^{Jet}<60')
@@ -632,7 +773,7 @@ for directory in categoryDirectory.GetListOfKeys():
             latex.DrawLatex(6+24,verticalLocation,'120<p_{t}^{Jet}<200')
             latex.DrawLatex(6+36,verticalLocation,'200<p_{t}^{Jet}<350')
             latex.DrawLatex(6+48,verticalLocation,'350<p_{t}^{Jet}')            
-            latex.DrawLatex(6+60,verticalLocation,'0 Jet')            
+            #latex.DrawLatex(6+60,verticalLocation,'0 Jet')            
         else:
             latex.DrawLatex(6,verticalLocation,'0 Jet')
             latex.DrawLatex(6+12,verticalLocation,'30<p_{t}^{Jet}<60')
@@ -657,9 +798,15 @@ for directory in categoryDirectory.GetListOfKeys():
     #plotGridHisto = histograms['dataHist'].Clone()
     nSlices = 0
     if args.measurementType == 'ljpt':
-        nSlices = 6
+        if channel == 'tt':
+            nSlices = 5
+        else:
+            nSlices = 6
     if args.measurementType == 'njets':
-        nSlices = 5
+        if channel == 'tt':
+            nSlices = 4
+        else:
+            nSlices = 5
     if args.measurementType == 'pth':
         if channel == 'tt' and category == 'HighTauPt':
             nSlices = 6

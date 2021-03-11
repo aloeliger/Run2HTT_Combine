@@ -12,7 +12,6 @@
 #include "CombineHarvester/CombineTools/interface/Systematics.h"
 #include "CombineHarvester/CombineTools/interface/BinByBin.h"
 #include "CombineHarvester/Run2HTT_Combine/interface/InputParserUtility.h"
-#include "CombineHarvester/Run2HTT_Combine/interface/FailsafeShapeDebugger.h"
 
 using namespace std;
 
@@ -63,8 +62,6 @@ int main(int argc, char **argv) {
   using ch::syst::process;
   using ch::JoinStr;
 
-  FailsafeShapeDebugger theShapeDebugger = FailsafeShapeDebugger(&cb, theFile);
-
   cb.cp().process({"jetFakes"}).AddSyst(cb, "reducible_norm_mtt", "lnN", SystMap<>::init(1.10));
   cb.cp().process({"WZ"}).AddSyst(cb, "CMS_htt_zzXsec_13TeV", "lnN", SystMap<>::init(1.032));
   cb.cp().process({"ZZ"}).AddSyst(cb, "CMS_htt_wzXsec_13TeV", "lnN", SystMap<>::init(1.032));
@@ -113,11 +110,11 @@ int main(int argc, char **argv) {
   cb.cp().process({"ZH_lep_hww125","ZH_lep_htt","ggZH_lep_htt","ggZH_lep_hww125","ggZH_lep_PTV_0_75_htt","ggZH_lep_PTV_75_150_htt","ggZH_lep_PTV_150_250_0J_htt","ggZH_lep_PTV_150_250_GE1J_htt","ggZH_lep_PTV_GT250_htt","ggZH_lep_PTV_0_75_hww125","ggZH_lep_PTV_75_150_hww125","ggZH_lep_PTV_150_250_0J_hww125","ggZH_lep_PTV_150_250_GE1J_hww125","ggZH_lep_PTV_GT250_hww125"}).AddSyst(cb, "pdf_Higgs_VH", "lnN", SystMap<>::init(1.016));
 
 
-  theShapeDebugger.cp().process({"ZH_lep_htt","WH_lep_htt","WH_lep_PTV_GT250_htt","WH_lep_PTV_0_75_htt","WH_lep_PTV_75_150_htt","WH_lep_PTV_150_250_0J_htt","WH_lep_PTV_150_250_GE1J_htt"}).AddSyst(cb,"qqVH_NLOEWK", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"WH_lep_htt"}).AddSyst(cb,"WHlep_scale", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"ZH_lep_htt"}).AddSyst(cb,"ZHlep_scale", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"WH_lep_PTV_0_75_htt","WH_lep_PTV_75_150_htt","WH_lep_PTV_150_250_0J_htt","WH_lep_PTV_150_250_GE1J_htt"}).AddSyst(cb,"WH_scale_lowpt", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"WH_lep_PTV_GT250_htt"}).AddSyst(cb,"WH_scale_highpt", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"ZH_lep_htt","WH_lep_htt","WH_lep_PTV_GT250_htt","WH_lep_PTV_0_75_htt","WH_lep_PTV_75_150_htt","WH_lep_PTV_150_250_0J_htt","WH_lep_PTV_150_250_GE1J_htt"}).AddSyst(cb,"qqVH_NLOEWK", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"WH_lep_htt"}).AddSyst(cb,"WHlep_scale", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"ZH_lep_htt"}).AddSyst(cb,"ZHlep_scale", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"WH_lep_PTV_0_75_htt","WH_lep_PTV_75_150_htt","WH_lep_PTV_150_250_0J_htt","WH_lep_PTV_150_250_GE1J_htt"}).AddSyst(cb,"WH_scale_lowpt", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"WH_lep_PTV_GT250_htt"}).AddSyst(cb,"WH_scale_highpt", "shape", SystMap<>::init(1.00));
 
 
   cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_2018", "lnN", SystMap<>::init(1.015));
@@ -144,53 +141,53 @@ int main(int argc, char **argv) {
   cb.cp().process({"TTV"}).AddSyst(cb,"CMS_btag_lfstats2_2018","lnN",SystMap<>::init(0.995));
   cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ"},sig_procs,HWW})).AddSyst(cb,"CMS_btag_lfstats2_2018","lnN",SystMap<>::init(1.001));
 
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_scale_t_1prong1pizero_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_scale_t_3prong_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_scale_t_3prong1pizero_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_scale_t_1prong1pizero_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_scale_t_3prong_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_scale_t_3prong1pizero_2018", "shape", SystMap<>::init(1.00));
 
   // Tau ID
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt20to25_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt25to30_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt30to35_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt35to40_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_ptgt40_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt20to25_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt25to30_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt30to35_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt35to40_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_ptgt40_2018", "shape", SystMap<>::init(1.00));
 
   //Scale met
-  theShapeDebugger.cp().process(JoinStr({{"WZ","ZZ"},sig_procs})).AddSyst(cb,"CMS_scale_met_unclustered_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"WZ","ZZ"},sig_procs})).AddSyst(cb,"CMS_scale_met_unclustered_2018", "shape", SystMap<>::init(1.00));
 
   //Scale m
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etalt1p2_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_eta1p2to2p1_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etagt2p1_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etalt1p2_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_eta1p2to2p1_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etagt2p1_2018", "shape", SystMap<>::init(1.00));
 
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt20to25_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt25to30_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt30to35_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt35to40_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt40to50_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt50to60_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_ptgt60_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt20to25_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt25to30_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt30to35_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt35to40_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt40to50_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt50to60_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_ptgt60_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt20to25_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt25to30_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt30to35_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt35to40_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt40to50_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt50to60_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_ptgt60_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt20to25_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt25to30_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt30to35_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt35to40_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt40to50_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt50to60_2018", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_ptgt60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt20to25_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt25to30_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt30to35_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt35to40_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt40to50_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt50to60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_ptgt60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt20to25_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt25to30_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt30to35_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt35to40_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt40to50_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_pt50to60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm1_ptgt60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt20to25_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt25to30_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt30to35_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt35to40_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt40to50_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_pt50to60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm10_ptgt60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt20to25_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt25to30_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt30to35_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt35to40_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt40to50_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_pt50to60_2018", "shape", SystMap<>::init(1.00));
+  cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm11_ptgt60_2018", "shape", SystMap<>::init(1.00));
 
   cb.cp().backgrounds().ExtractShapes(
       aux_shapes + "whmtt2018.root",

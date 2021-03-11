@@ -12,7 +12,6 @@
 #include "CombineHarvester/CombineTools/interface/Systematics.h"
 #include "CombineHarvester/CombineTools/interface/BinByBin.h"
 #include "CombineHarvester/Run2HTT_Combine/interface/InputParserUtility.h"
-#include "CombineHarvester/Run2HTT_Combine/interface/FailsafeShapeDebugger.h"
 
 using namespace std;
 
@@ -62,8 +61,6 @@ int main(int argc, char **argv) {
   using ch::syst::bin_id;
   using ch::syst::process;
   using ch::JoinStr;
-
-  FailsafeShapeDebugger theShapeDebugger = FailsafeShapeDebugger(&cb, theFile);
 
   cb.cp().process({"jetFakes"}).AddSyst(cb, "reducible_norm_mtt", "lnN", SystMap<>::init(1.10));
   cb.cp().process({"WZ"}).AddSyst(cb, "CMS_htt_zzXsec_13TeV", "lnN", SystMap<>::init(1.032));
@@ -152,22 +149,22 @@ int main(int argc, char **argv) {
   cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_scale_t_3prong1pizero_2017", "shape", SystMap<>::init(1.00));
 
   // Tau ID
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt20to25_2017", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt25to30_2017", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt30to35_2017", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt35to40_2017", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_ptgt40_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt20to25_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt25to30_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt30to35_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_pt35to40_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_tauideff_ptgt40_2017", "shape", SystMap<>::init(1.00));
 
   //Scale met
-  theShapeDebugger.cp().process(JoinStr({{"WZ","ZZ"},sig_procs})).AddSyst(cb,"CMS_scale_met_unclustered_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"WZ","ZZ"},sig_procs})).AddSyst(cb,"CMS_scale_met_unclustered_2017", "shape", SystMap<>::init(1.00));
 
   //Scale m
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etalt1p2_2017", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_eta1p2to2p1_2017", "shape", SystMap<>::init(1.00));
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etagt2p1_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etalt1p2_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_eta1p2to2p1_2017", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs})).AddSyst(cb,"CMS_scale_m_etagt2p1_2017", "shape", SystMap<>::init(1.00));
 
   //Prefiring
-  theShapeDebugger.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_prefiring", "shape", SystMap<>::init(1.00));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb,"CMS_prefiring", "shape", SystMap<>::init(1.00));
 
 
   cb.cp().process({"jetFakes"}).AddSyst(cb,"CMS_fakeTauVT_dm0_pt20to25_2017", "shape", SystMap<>::init(1.00));

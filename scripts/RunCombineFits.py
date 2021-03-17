@@ -49,6 +49,8 @@ parser.add_argument('--nGridPoints',help='Number of grid points to use when usin
 parser.add_argument('--workspaceOnly',help='Create the text cards, and workspaces only, and then exit. Do not attempt any fits.',action='store_true')
 parser.add_argument('--stage0CrossSection',help='Create workspaces for a stage 0 cross section measurements. Removes some uncertainties.',action='store_true')
 parser.add_argument('--stage1CrossSection',help='Create workspaces for a stage 1 cross section measurements. Removes some uncertainties.',action='store_true')
+parser.add_argument('--RunInclusiveVH',help='Run using an inclusive set of VH distributions (no STXS bins)',action="store_true")
+parser.add_argument('--UseHWWSTXS',help='Run using HWW split up into its STXS components',action="store_true")
 
 print("Parsing command line arguments.")
 args = parser.parse_args() 
@@ -140,6 +142,10 @@ if 'Standard' in args.analysisStyle:
                 DataCardCreationCommand+=" -x0"
             if args.stage1CrossSection:
                 DataCardCreationCommand+=" -x1"
+            if args.RunInclusiveVH:
+                DataCardCreationCommand+=' --IncVH'
+            if args.UseHWWSTXS:
+                DataCardCreationCommand+=' --STXS_HWW'
             DataCardCreationCommand+=" --Categories"
             if args.ControlMode:
                 TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/"+channel+"_controls_"+year+".root")
@@ -165,6 +171,10 @@ if 'WH' in args.analysisStyle:
     for year in args.years:        
         for channel in args.WHChannels:
             DataCardCreationCommand="WH"+year+"_"+channel+" "+OutputDir
+            if args.RunInclusiveVH:
+                DataCardCreationCommand+=' --IncVH'
+            if args.UseHWWSTXS:
+                DataCardCreationCommand+=' --STXS_HWW'
             logging.info("WH Datacard Creation Command:")
             logging.info('\n\n'+DataCardCreationCommand+'\n')
             assert os.system(DataCardCreationCommand+" | tee -a "+outputLoggingFile) == 0, "Model exited with status !=0. Please check for errors"
@@ -174,6 +184,10 @@ if 'ZH' in args.analysisStyle:
         #one executable handles all channels now, so multiples don't have to be called.
         #for channel in args.ZHChannels:
         DataCardCreationCommand="ZH"+year+" "+OutputDir
+        if args.RunInclusiveVH:
+            DataCardCreationCommand+=' --IncVH'
+        if args.UseHWWSTXS:
+            DataCardCreationCommand+=' --STXS_HWW'
         logging.info("ZH Datacard Creation Command:")
         logging.info('\n\n'+DataCardCreationCommand+'\n')
         assert os.system(DataCardCreationCommand+" | tee -a "+outputLoggingFile) == 0, "Model exited with status !=0. Please check for errors"

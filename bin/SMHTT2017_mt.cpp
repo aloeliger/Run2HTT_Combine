@@ -1203,7 +1203,11 @@ int main(int argc, char **argv)
   if(not Input.OptionExists("-e"))
     {      
       //test embedded zero jet normalization uncertainty
-      cb.cp().process({"embedded"}).AddSyst(cb,"CMS_EmbeddedZeroJet_2017", "shape", SystMap<>::init(0.66));
+      if (Input.OptionExists("-dp") || Input.OptionExists("-dn") || Input.OptionExists("-dm")||Input.OptionExists("-dljpt"))
+	{
+	  cb.cp().process({"embedded"}).AddSyst(cb,"CMS_EmbeddedZeroJet_2017", "shape", SystMap<>::init(0.66));
+	}
+      
      
       //50% correlation with ID unc in MC
       cb.cp().process({"embedded"}).AddSyst(cb,"CMS_eff_m_2017","lnN",SystMap<>::init(1.010));

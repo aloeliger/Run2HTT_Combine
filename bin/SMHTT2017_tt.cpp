@@ -482,7 +482,7 @@ int main(int argc, char **argv)
       cb.cp().process(JoinStr({WH_STXS,{"WH_hww125","WH_htt_nonfid125"}})).AddSyst(cb, "pdf_Higgs_VH", "lnN", SystMap<>::init(1.018));
       cb.cp().process(JoinStr({ZH_STXS,{"ZH_hww125","ZH_htt_nonfid125"}})).AddSyst(cb, "pdf_Higgs_VH", "lnN", SystMap<>::init(1.013));
       cb.cp().process(JoinStr({ggH_STXS,{"ggH_hww125","ggH_htt_nonfid125"}})).AddSyst(cb, "pdf_Higgs_gg", "lnN", SystMap<>::init(1.032));
-      cb.cp().process(JoinStr({qqH_STXS,{"qqH_hww125","qqH_htt_nonfid125"}})).AddSyst(cb, "pdf_Higgs_qq", "lnN", SystMap<>::init(1.021));
+      cb.cp().process(JoinStr({qqH_STXS,{"qqH_hww125","qqH_htt_nonfid125"}})).AddSyst(cb, "pdf_Higgs_qqbar", "lnN", SystMap<>::init(1.021));
     }
   cb.cp().process({"ggH_hww125","qqH_hww125","WH_hww125","ZH_hww125"}).AddSyst(cb, "BR_hww_PU_alphas", "lnN", ch::syst::SystMapAsymm<>::init(1.0066,1.0063));
   cb.cp().process({"ggH_hww125","qqH_hww125","WH_hww125","ZH_hww125"}).AddSyst(cb, "BR_hww_PU_mq", "lnN", ch::syst::SystMapAsymm<>::init(1.0099,1.0098));
@@ -684,11 +684,11 @@ int main(int argc, char **argv)
   cb.cp().process({ggH_STXS}).bin({"tt_vbf_lowHpT"}).AddSyst(cb,"pdf_Higgs_gg_ACCEPT","lnN",SystMap<>::init(1.013));
   cb.cp().process({ggH_STXS}).bin({"tt_vbf_highHpT"}).AddSyst(cb,"pdf_Higgs_gg_ACCEPT","lnN",SystMap<>::init(1.013));
 
-  cb.cp().process({qqH_STXS}).bin({"tt_0jet"}).AddSyst(cb,"pdf_Higgs_qq_ACCEPT","lnN",SystMap<>::init(1.008));
-  cb.cp().process({qqH_STXS}).bin({"tt_boosted_onejet"}).AddSyst(cb,"pdf_Higgs_qq_ACCEPT","lnN",SystMap<>::init(1.005));
-  cb.cp().process({qqH_STXS}).bin({"tt_boosted_multijet"}).AddSyst(cb,"pdf_Higgs_qq_ACCEPT","lnN",SystMap<>::init(1.004));
-  cb.cp().process({qqH_STXS}).bin({"tt_vbf_lowHpT"}).AddSyst(cb,"pdf_Higgs_qq_ACCEPT","lnN",SystMap<>::init(1.006));
-  cb.cp().process({qqH_STXS}).bin({"tt_vbf_highHpT"}).AddSyst(cb,"pdf_Higgs_qq_ACCEPT","lnN",SystMap<>::init(1.006));
+  cb.cp().process({qqH_STXS}).bin({"tt_0jet"}).AddSyst(cb,"pdf_Higgs_qqbar_ACCEPT","lnN",SystMap<>::init(1.008));
+  cb.cp().process({qqH_STXS}).bin({"tt_boosted_onejet"}).AddSyst(cb,"pdf_Higgs_qqbar_ACCEPT","lnN",SystMap<>::init(1.005));
+  cb.cp().process({qqH_STXS}).bin({"tt_boosted_multijet"}).AddSyst(cb,"pdf_Higgs_qqbar_ACCEPT","lnN",SystMap<>::init(1.004));
+  cb.cp().process({qqH_STXS}).bin({"tt_vbf_lowHpT"}).AddSyst(cb,"pdf_Higgs_qqbar_ACCEPT","lnN",SystMap<>::init(1.006));
+  cb.cp().process({qqH_STXS}).bin({"tt_vbf_highHpT"}).AddSyst(cb,"pdf_Higgs_qqbar_ACCEPT","lnN",SystMap<>::init(1.006));
   
   // XSection Uncertainties
   cb.cp().process({"TTT","TTL"}).AddSyst(cb,"CMS_htt_tjXsec", "lnN", SystMap<>::init(1.042));

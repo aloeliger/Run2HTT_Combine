@@ -1219,18 +1219,25 @@ int main(int argc, char **argv)
 			  TheFile,
 			  CategoryArgs
 			  );
-      //FIX ME: shapes are valid on split VH_lep, but we do not use seperated VH_lep at the moment.
-      /*
       AddShapesIfNotEmpty({"WH_scale_lowpt"},
-			  {"WH_lep_htt125"},
+			  {"WH_lep_PTV_0_75_htt125",
+			  "WH_lep_PTV_75_150_htt125",
+			  "WH_lep_PTV_150_250_0J_htt125",
+			  "WH_lep_PTV_150_250_GE1J_htt125"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ZH_scale_lowpt"},
-			  {"ZH_lep_htt125",
-			      "ggZH_lep_htt125"},
+			  {"ZH_lep_PTV_0_75_htt125",
+			  "ZH_lep_PTV_75_150_htt125",
+			  "ZH_lep_PTV_150_250_0J_htt125",
+			  "ZH_lep_PTV_150_250_GE1J_htt125",
+			  "ggZH_lep_PTV_0_75_htt125",
+			  "ggZH_lep_PTV_75_150_htt125",
+			  "ggZH_lep_PTV_150_250_0J_htt125",
+			  "ggZH_lep_PTV_150_250_GE1J_htt125"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1239,21 +1246,20 @@ int main(int argc, char **argv)
       
       
       AddShapesIfNotEmpty({"WH_scale_highpt"},
-			  {"WH_lep_htt125"},
+			  {"WH_lep_PTV_GT250_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ZH_scale_highpt"},
-			  {"ZH_lep_htt125",
-			      "ggZH_lep_htt125"},
+			  {"ZH_lep_PTV_GT250_htt",
+			  "ggZH_lep_PTV_GT250_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
-      */
     }
   // Shape for looser Deep tau ID vsLep than recommanded WP
   if(Input.OptionExists("-dp")||Input.OptionExists("-dn")||Input.OptionExists("-dm")||Input.OptionExists("-dljpt"))

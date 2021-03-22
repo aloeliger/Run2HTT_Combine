@@ -49,6 +49,7 @@ parser.add_argument('--nGridPoints',help='Number of grid points to use when usin
 parser.add_argument('--workspaceOnly',help='Create the text cards, and workspaces only, and then exit. Do not attempt any fits.',action='store_true')
 parser.add_argument('--stage0CrossSection',help='Create workspaces for a stage 0 cross section measurements. Removes some uncertainties.',action='store_true')
 parser.add_argument('--stage1CrossSection',help='Create workspaces for a stage 1 cross section measurements. Removes some uncertainties.',action='store_true')
+parser.add_argument('--STXS_HWW',help='Create workspaces using STXS split hww',action='store_true')
 
 print("Parsing command line arguments.")
 args = parser.parse_args() 
@@ -140,6 +141,8 @@ if 'Standard' in args.analysisStyle:
                 DataCardCreationCommand+=" -x0"
             if args.stage1CrossSection:
                 DataCardCreationCommand+=" -x1"
+            if args.STXS_HWW:
+                DataCardCreationCommand+="--STXS_HWW"
             DataCardCreationCommand+=" --Categories"
             if args.ControlMode:
                 TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/"+channel+"_controls_"+year+".root")

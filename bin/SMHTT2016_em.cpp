@@ -72,6 +72,11 @@ int main(int argc, char **argv)
       bkg_procs.push_back("STT");      
     }
   else bkg_procs.push_back("embedded");
+  vector<string> ggH_HWW_STXS;
+  vector<string> qqH_HWW_STXS;
+  vector<string> WH_HWW_STXS;
+  vector<string> ZH_HWW_STXS;
+  vector<string> ggZH_HWW_STXS;
   if (Input.OptionExists("-dp") || Input.OptionExists("-dn") || Input.OptionExists("-dm")||Input.OptionExists("-dljpt"))
     {
       bkg_procs.push_back("ggH_htt_nonfid125");
@@ -81,10 +86,101 @@ int main(int argc, char **argv)
     }
   else
     {
-      bkg_procs.push_back("ggH_hww125");
-      bkg_procs.push_back("qqH_hww125");
-      bkg_procs.push_back("WH_hww125");
-      bkg_procs.push_back("ZH_hww125");
+      if(Input.OptionExists("--STXS_HWW"))
+	{
+	  ggH_HWW_STXS = {"ggH_PTH_0_200_0J_PTH_10_200_hww125",
+			  "ggH_PTH_0_200_0J_PTH_0_10_hww125",
+			  "ggH_PTH_0_200_1J_PTH_0_60_hww125",
+			  "ggH_PTH_0_200_1J_PTH_60_120_hww125",
+			  "ggH_PTH_0_200_1J_PTH_120_200_hww125",
+			  "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_hww125",
+			  "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_hww125",
+			  "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_hww125",
+			  "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_hww125",
+			  "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_hww125",
+			  "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_hww125",
+			  "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_hww125",
+			  "ggH_PTH_200_300_hww125",
+			  "ggH_PTH_300_450_hww125",
+			  "ggH_PTH_450_650_hww125",
+			  "ggH_PTH_GE650_hww125"};
+	  
+	  qqH_HWW_STXS = {"qqH_0J_hww125",
+			  "qqH_1J_hww125",
+			  "qqH_GE2J_MJJ_0_60_hww125",
+			  "qqH_GE2J_MJJ_60_120_hww125",
+			  "qqH_GE2J_MJJ_120_350_hww125",
+			  "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_hww125",
+			  "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_hww125",
+			  "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_hww125",
+			  "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_hww125",
+			  "qqH_GE2J_MJJ_GE350_PTH_GE200_hww125"};
+
+	  WH_HWW_STXS = {"WH_lep_PTV_0_75_hww125",
+			 "WH_lep_PTV_75_150_hww125",
+			 "WH_lep_PTV_150_250_0J_hww125",
+			 "WH_lep_PTV_150_250_GE1J_hww125",
+			 "WH_lep_PTV_GT250_hww125",
+			 "WH_0J_hww125",
+			 "WH_1J_hww125",
+			 "WH_GE2J_MJJ_0_60_hww125",
+			 "WH_GE2J_MJJ_60_120_hww125",
+			 "WH_GE2J_MJJ_120_350_hww125",
+			 "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_hww125",
+			 "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_hww125",
+			 "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_hww125",
+			 "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_hww125",
+			 "WH_GE2J_MJJ_GE350_PTH_GE200_hww125",
+	  };
+	  ZH_HWW_STXS = {"ZH_lep_PTV_0_75_hww125",
+			 "ZH_lep_PTV_75_150_hww125",
+			 "ZH_lep_PTV_150_250_0J_hww125",
+			 "ZH_lep_PTV_150_250_GE1J_hww125",
+			 "ZH_lep_PTV_GT250_hww125",
+			 "ZH_0J_hww125",
+			 "ZH_1J_hww125",
+			 "ZH_GE2J_MJJ_0_60_hww125",
+			 "ZH_GE2J_MJJ_60_120_hww125",
+			 "ZH_GE2J_MJJ_120_350_hww125",
+			 "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_hww125",
+			 "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_hww125",
+			 "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_hww125",
+			 "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_hww125",
+			 "ZH_GE2J_MJJ_GE350_PTH_GE200_hww125",
+	  };
+	  ggZH_HWW_STXS ={"ggZH_lep_PTV_0_75_hww125",
+			  "ggZH_lep_PTV_75_150_hww125",
+			  "ggZH_lep_PTV_150_250_0J_hww125",
+			  "ggZH_lep_PTV_150_250_GE1J_hww125",
+			  "ggZH_lep_PTV_GT250_hww125",
+			  "ggZH_PTH_0_200_0J_PTH_10_200_hww125",
+			  "ggZH_PTH_0_200_0J_PTH_0_10_hww125",
+			  "ggZH_PTH_0_200_1J_PTH_0_60_hww125",
+			  "ggZH_PTH_0_200_1J_PTH_60_120_hww125",
+			  "ggZH_PTH_0_200_1J_PTH_120_200_hww125",
+			  "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_hww125",
+			  "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_hww125",
+			  "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_hww125",
+			  "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_hww125",
+			  "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_hww125",
+			  "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_hww125",
+			  "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_hww125",
+			  "ggZH_PTH_200_300_hww125",
+			  "ggZH_PTH_300_450_hww125",
+			  "ggZH_PTH_450_650_hww125",
+			  "ggZH_PTH_GE650_hww125"
+	  };
+	}
+      else
+	{
+	  ggH_HWW_STXS = {"ggH_hww125"};
+	  qqH_HWW_STXS = {"qqH_hww125"};
+	  WH_HWW_STXS = {"WH_hww125"};
+	  ZH_HWW_STXS = {"ZH_hww125"};
+	  ggZH_HWW_STXS = {};
+	}
+      
+      bkg_procs = ch::JoinStr({bkg_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS});
     }
   cb.AddProcesses({"*"}, {"smh2016"}, {"13TeV"}, {"em"}, bkg_procs, cats, false);
 
@@ -228,7 +324,11 @@ int main(int argc, char **argv)
       "WH_LJPT_GT350_htt125",
     };
   else WH_STXS = {
-      "WH_lep_htt125",
+      "WH_lep_PTV_0_75_htt125",
+      "WH_lep_PTV_75_150_htt125",
+      "WH_lep_PTV_150_250_0J_htt125",
+      "WH_lep_PTV_150_250_GE1J_htt125",
+      "WH_lep_PTV_GT250_htt125",
       "WH_0J_htt125",
       "WH_1J_htt125",
       "WH_GE2J_MJJ_0_60_htt125",
@@ -279,7 +379,11 @@ int main(int argc, char **argv)
       "ZH_LJPT_GT350_htt125",
     };
   else ZH_STXS = {
-      "ZH_lep_htt125",
+      "ZH_lep_PTV_0_75_htt125",
+      "ZH_lep_PTV_75_150_htt125",
+      "ZH_lep_PTV_150_250_0J_htt125",
+      "ZH_lep_PTV_150_250_GE1J_htt125",
+      "ZH_lep_PTV_GT250_htt125",
       "ZH_0J_htt125",
       "ZH_1J_htt125",
       "ZH_GE2J_MJJ_0_60_htt125",
@@ -295,7 +399,11 @@ int main(int argc, char **argv)
   if (Input.OptionExists("-g")) ggZH_STXS = {"ggZH_lep_htt125","ggZH_had_htt125"};
   else if (Input.OptionExists("-dm")||Input.OptionExists("-dp")||Input.OptionExists("-dn")||Input.OptionExists("-dljpt")) ggZH_STXS = {};
   else ggZH_STXS = {
-      "ggZH_lep_htt125",
+      "ggZH_lep_PTV_0_75_htt125",
+      "ggZH_lep_PTV_75_150_htt125",
+      "ggZH_lep_PTV_150_250_0J_htt125",
+      "ggZH_lep_PTV_150_250_GE1J_htt125",
+      "ggZH_lep_PTV_GT250_htt125",
       "ggZH_PTH_0_200_0J_PTH_10_200_htt125",
       "ggZH_PTH_0_200_0J_PTH_0_10_htt125",
       "ggZH_PTH_0_200_1J_PTH_0_60_htt125",

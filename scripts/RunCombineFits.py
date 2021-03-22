@@ -142,7 +142,7 @@ if 'Standard' in args.analysisStyle:
             if args.stage1CrossSection:
                 DataCardCreationCommand+=" -x1"
             if args.STXS_HWW:
-                DataCardCreationCommand+="--STXS_HWW"
+                DataCardCreationCommand+=" --STXS_HWW"
             DataCardCreationCommand+=" --Categories"
             if args.ControlMode:
                 TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/"+channel+"_controls_"+year+".root")

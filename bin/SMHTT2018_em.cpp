@@ -1169,18 +1169,25 @@ cb.cp().process({ggH_STXS}).bin({"em_0jet"}).AddSyst(cb,"pdf_Higgs_gg_ACCEPT","l
 			  CategoryArgs
 			  );
       
-      //FIX ME: shapes are valid on split VH_lep, but we do not use seperated VH_lep at the moment.
-      /*
       AddShapesIfNotEmpty({"WH_scale_lowpt"},
-			  {"WH_lep_htt125"},
+			  {"WH_lep_PTV_0_75_htt125",
+			  "WH_lep_PTV_75_150_htt125",
+			  "WH_lep_PTV_150_250_0J_htt125",
+			  "WH_lep_PTV_150_250_GE1J_htt125"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ZH_scale_lowpt"},
-			  {"ZH_lep_htt125",
-			      "ggZH_lep_htt125"},
+			  {"ZH_lep_PTV_0_75_htt125",
+			  "ZH_lep_PTV_75_150_htt125",
+			  "ZH_lep_PTV_150_250_0J_htt125",
+			  "ZH_lep_PTV_150_250_GE1J_htt125",
+			  "ggZH_lep_PTV_0_75_htt125",
+			  "ggZH_lep_PTV_75_150_htt125",
+			  "ggZH_lep_PTV_150_250_0J_htt125",
+			  "ggZH_lep_PTV_150_250_GE1J_htt125"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1189,21 +1196,20 @@ cb.cp().process({ggH_STXS}).bin({"em_0jet"}).AddSyst(cb,"pdf_Higgs_gg_ACCEPT","l
       
       
       AddShapesIfNotEmpty({"WH_scale_highpt"},
-			  {"WH_lep_htt125"},
+			  {"WH_lep_PTV_GT250_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ZH_scale_highpt"},
-			  {"ZH_lep_htt125",
-			      "ggZH_lep_htt125"},
+			  {"ZH_lep_PTV_GT250_htt",
+			  "ggZH_lep_PTV_GT250_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
-      */
     }
   //*******************************************************
   //embedded uncertainties. 

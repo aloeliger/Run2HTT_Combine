@@ -19,7 +19,7 @@ parser.add_argument('--analysisStyle',nargs="+",choices=['Standard','WH','ZH'],h
 parser.add_argument('--years',nargs="+",choices=['2016','2017','2018'],help="Specify the year(s) to run the fit for",required=True)
 parser.add_argument('--channels',nargs="+",choices=['mt','et','tt','em'],help="specify the channels to create standard data cards for")
 parser.add_argument('--WHChannels',nargs="+",choices=['emt','ett','mmt','mtt'],help="specify the channels to create WH datacards for")
-parser.add_argument('--ZHChannels',nargs="+",choices=['llem','llet','llmt','lltt'],help='specify the channels to create ZH datacards for')
+parser.add_argument('--ZHChannels',nargs="+",choices=['eeet','eemt','eett','mmet','mmmt','mmtt'],help='specify the channels to create ZH datacards for')
 parser.add_argument('--RunShapeless',help="Run combine model without using any shape uncertainties",action="store_true")
 parser.add_argument('--RunWithBinByBin',help="Run combine model without using bin-by-bin uncertainties",action="store_true")
 parser.add_argument('--RunWithoutAutoMCStats',help="Run with auto mc stats command appended to data cards",action="store_true")
@@ -49,7 +49,8 @@ parser.add_argument('--nGridPoints',help='Number of grid points to use when usin
 parser.add_argument('--workspaceOnly',help='Create the text cards, and workspaces only, and then exit. Do not attempt any fits.',action='store_true')
 parser.add_argument('--stage0CrossSection',help='Create workspaces for a stage 0 cross section measurements. Removes some uncertainties.',action='store_true')
 parser.add_argument('--stage1CrossSection',help='Create workspaces for a stage 1 cross section measurements. Removes some uncertainties.',action='store_true')
-parser.add_argument('--STXS_HWW',help='Create workspaces using STXS split hww',action='store_true')
+parser.add_argument('--RunInclusiveVH',help='Run using an inclusive set of VH distributions (no STXS bins)',action="store_true")
+parser.add_argument('--UseHWWSTXS',help='Run using HWW split up into its STXS components',action="store_true")
 
 print("Parsing command line arguments.")
 args = parser.parse_args() 
@@ -141,8 +142,10 @@ if 'Standard' in args.analysisStyle:
                 DataCardCreationCommand+=" -x0"
             if args.stage1CrossSection:
                 DataCardCreationCommand+=" -x1"
-            if args.STXS_HWW:
-                DataCardCreationCommand+=" --STXS_HWW"
+            if args.RunInclusiveVH:
+                DataCardCreationCommand+=' --IncVH'
+            if args.UseHWWSTXS:
+                DataCardCreationCommand+=' --STXS_HWW'
             DataCardCreationCommand+=" --Categories"
             if args.ControlMode:
                 TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/"+channel+"_controls_"+year+".root")
@@ -168,17 +171,26 @@ if 'WH' in args.analysisStyle:
     for year in args.years:        
         for channel in args.WHChannels:
             DataCardCreationCommand="WH"+year+"_"+channel+" "+OutputDir
+            if args.RunInclusiveVH:
+                DataCardCreationCommand+=' --IncVH'
+            if args.UseHWWSTXS:
+                DataCardCreationCommand+=' --STXS_HWW'
             logging.info("WH Datacard Creation Command:")
             logging.info('\n\n'+DataCardCreationCommand+'\n')
             assert os.system(DataCardCreationCommand+" | tee -a "+outputLoggingFile) == 0, "Model exited with status !=0. Please check for errors"
 
 if 'ZH' in args.analysisStyle:
     for year in args.years:
-        for channel in args.ZHChannels:
-            DataCardCreationCommand="ZH"+year+"_"+channel+" "+OutputDir
-            logging.info("ZH Datacard Creation Command:")
-            logging.info('\n\n'+DataCardCreationCommand+'\n')
-            assert os.system(DataCardCreationCommand+" | tee -a "+outputLoggingFile) == 0, "Model exited with status !=0. Please check for errors"
+        #one executable handles all channels now, so multiples don't have to be called.
+        #for channel in args.ZHChannels:
+        DataCardCreationCommand="ZH"+year+" "+OutputDir
+        if args.RunInclusiveVH:
+            DataCardCreationCommand+=' --IncVH'
+        if args.UseHWWSTXS:
+            DataCardCreationCommand+=' --STXS_HWW'
+        logging.info("ZH Datacard Creation Command:")
+        logging.info('\n\n'+DataCardCreationCommand+'\n')
+        assert os.system(DataCardCreationCommand+" | tee -a "+outputLoggingFile) == 0, "Model exited with status !=0. Please check for errors"
 
 #combine all cards together
 #we can't do this the old way of first mashing all channels together and then mashing those into a final card
@@ -228,8 +240,16 @@ if 'WH' in args.analysisStyle:
 
 if 'ZH' in args.analysisStyle:
     for year in args.years:
+        zhCardIndex={
+            'eeet': 1,
+            'eemt': 2,
+            'eett': 3,
+            'mmet': 4,
+            'mmmt': 5,
+            'mmtt': 6,
+        }#these are now handled in the same executable, and are indexed specifically
         for channel in args.ZHChannels:
-            zhCardName="zh_"+channel+"_1_"+year+"_125.txt"
+            zhCardName="zh_all8_"+str(zhCardIndex[channel])+"_"+year+"_125.txt"
             CardFile = open(OutputDir+zhCardName,"a+")
             CardFile.write("* autoMCStats 0.0\n")
             CardFile.close()
@@ -877,51 +897,51 @@ if args.ComputeGOF:
         os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
 
     for year in args.years:
-       for channel in args.channels:
-          if channel=="mt":
-            channelTitle = "#mu#tau"
-          if channel=="et":
-            channelTitle = "e#tau"
-          if channel=="tt":
-            channelTitle = "#tau#tau"
-          if channel=="em":
-            channelTitle = "e#mu"
-          CardNum = 1
-          if args.Unblind:
-              TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+".root")
-          else:
-              TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+"_GOF.root")
-          print "Working on GOF with data outside signal region ",os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+"_GOF.root"
-          for Directory in TheFile.GetListOfKeys():
-              if Directory.GetName() in cfg.Categories[channel]:
-                 ImpactCommand = "text2workspace.py -m 125 smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_.txt "
-                 if args.DontPrintResults:
-                     os.system(ImpactCommand+" > /dev/null")
-                 else:
-                     os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
-                 GOFJsonName = "gof_"+channel+"_"+year+"_"+str(CardNum)+"_"+DateTag+".json"
-                 ImpactCommand = "combineTool.py -M GoodnessOfFit --algorithm saturated -m 125 --there -d smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_.root -n '.saturated."+year+"_"+channel+"_"+str(CardNum)+".toys'  -t 25 -s 0:19:1 --parallel 12"
-                 if args.DontPrintResults:
-                     os.system(ImpactCommand+" > /dev/null")
-                 else:
-                     os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
+        for channel in args.channels:
+            if channel=="mt":
+               channelTitle = "#mu#tau"
+            if channel=="et":
+                channelTitle = "e#tau"
+            if channel=="tt":
+                channelTitle = "#tau#tau"
+            if channel=="em":
+                channelTitle = "e#mu"
+            CardNum = 1
+            if args.Unblind:
+                TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+".root")
+            else:
+                TheFile = ROOT.TFile(os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+"_GOF.root")
+                print "Working on GOF with data outside signal region ",os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+"_GOF.root"
+            for Directory in TheFile.GetListOfKeys():
+                if Directory.GetName() in cfg.Categories[channel]:
+                    ImpactCommand = "text2workspace.py -m 125 smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_.txt "
+                if args.DontPrintResults:
+                    os.system(ImpactCommand+" > /dev/null")
+                else:
+                    os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
+                GOFJsonName = "gof_"+channel+"_"+year+"_"+str(CardNum)+"_"+DateTag+".json"
+                ImpactCommand = "combineTool.py -M GoodnessOfFit --algorithm saturated -m 125 --there -d smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_.root -n '.saturated."+year+"_"+channel+"_"+str(CardNum)+".toys'  -t 25 -s 0:19:1 --parallel 12"
+                if args.DontPrintResults:
+                    os.system(ImpactCommand+" > /dev/null")
+                else:
+                    os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
 
-                 ImpactCommand = "combineTool.py -M GoodnessOfFit --algorithm saturated -m 125 --there -d smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_.root -n '.saturated."+year+"_"+channel+"_"+str(CardNum)+"'"
-                 if args.DontPrintResults:
-                     os.system(ImpactCommand+" > /dev/null")
-                 else:
-                     os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
+                ImpactCommand = "combineTool.py -M GoodnessOfFit --algorithm saturated -m 125 --there -d smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_.root -n '.saturated."+year+"_"+channel+"_"+str(CardNum)+"'"
+                if args.DontPrintResults:
+                    os.system(ImpactCommand+" > /dev/null")
+                else:
+                    os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
 
-                 ImpactCommand = "combineTool.py -M CollectGoodnessOfFit --input higgsCombine.saturated."+year+"_"+channel+"_"+str(CardNum)+".GoodnessOfFit.mH125.root higgsCombine.saturated."+year+"_"+channel+"_"+str(CardNum)+".toys.GoodnessOfFit.mH125.*.root -o "+GOFJsonName
-                 os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
+                ImpactCommand = "combineTool.py -M CollectGoodnessOfFit --input higgsCombine.saturated."+year+"_"+channel+"_"+str(CardNum)+".GoodnessOfFit.mH125.root higgsCombine.saturated."+year+"_"+channel+"_"+str(CardNum)+".toys.GoodnessOfFit.mH125.*.root -o "+GOFJsonName
+                os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
 
-                 ImpactCommand = "python ../../../CombineTools/scripts/plotGof.py --statistic saturated --mass 125.0 "+GOFJsonName+" --title-right='' --output='saturated_"+year+"_"+channel+"_"+str(CardNum)+"' --title-left='"+year+" "+channelTitle+"' --title-right='"+CategoryMaps.mapTDir[Directory.GetName()]+"'"
-                 if args.DontPrintResults:
-                     os.system(ImpactCommand+" > /dev/null")
-                 else:
-                     os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
+                ImpactCommand = "python ../../../CombineTools/scripts/plotGof.py --statistic saturated --mass 125.0 "+GOFJsonName+" --title-right='' --output='saturated_"+year+"_"+channel+"_"+str(CardNum)+"' --title-left='"+year+" "+channelTitle+"' --title-right='"+CategoryMaps.mapTDir[Directory.GetName()]+"'"
+                if args.DontPrintResults:
+                    os.system(ImpactCommand+" > /dev/null")
+                else:
+                    os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
 
-                 CardNum+=1
+                CardNum+=1
 
     os.chdir("../../")
 #Run kappaV kappaF scan using the Asimov dataset please see below for details

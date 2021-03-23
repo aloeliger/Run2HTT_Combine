@@ -143,11 +143,11 @@ int main(int argc, char **argv)
 			 "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_hww125",
 			 "ZH_GE2J_MJJ_GE350_PTH_GE200_hww125",
 	  };
-	  ggZH_HWW_STXS ={"ggZH_lep_PTV_0_75_hww125",
+	  ggZH_HWW_STXS ={/*"ggZH_lep_PTV_0_75_hww125",
 			  "ggZH_lep_PTV_75_150_hww125",
 			  "ggZH_lep_PTV_150_250_0J_hww125",
 			  "ggZH_lep_PTV_150_250_GE1J_hww125",
-			  "ggZH_lep_PTV_GT250_hww125",
+			  "ggZH_lep_PTV_GT250_hww125",*/
 			  "ggZH_PTH_0_200_0J_PTH_10_200_hww125",
 			  "ggZH_PTH_0_200_0J_PTH_0_10_hww125",
 			  "ggZH_PTH_0_200_1J_PTH_0_60_hww125",

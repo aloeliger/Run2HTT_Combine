@@ -84,6 +84,7 @@ int main(int argc, char **argv)
     {
       if(Input.OptionExists("--STXS_HWW"))
 	{
+	  /*
 	  ggH_HWW_STXS = {"ggH_PTH_0_200_0J_PTH_10_200_hww125",
 			  "ggH_PTH_0_200_0J_PTH_0_10_hww125",
 			  "ggH_PTH_0_200_1J_PTH_0_60_hww125",
@@ -165,6 +166,13 @@ int main(int argc, char **argv)
 			  "ggZH_PTH_450_650_hww125",
 			  "ggZH_PTH_GE650_hww125"
 	  };
+	  */
+	  ggH_HWW_STXS = {};
+	  qqH_HWW_STXS = {};
+	  WH_HWW_STXS = {};
+	  ZH_HWW_STXS = {};
+	  ggZH_HWW_STXS = {};
+	  
 	}
       else
 	{

@@ -378,20 +378,20 @@ if args.RunSTXS:
         PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ggZH_PTH_0_200_1J_PTH_120_200_htt125:r_ggH_1J_PTH_120_200[1,-25,25]' "
     if 'WH' in args.analysisStyle:
         MergedSignalNames.append("WH_PTH_LT_150")
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_0_75_htt125:r_WH_PTH_LT_150[1,-25,25]'"
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_75_150_htt125:r_WH_PTH_LT_150[1,-25,25]'"
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_0_75_htt125:r_WH_PTH_LT_150[1,-25,25]' "
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_75_150_htt125:r_WH_PTH_LT_150[1,-25,25]' "
         MergedSignalNames.append("WH_PTH_GT_150")
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_0J_htt125:r_WH_PTH_GT_150[1,-25,25]'"
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_GE1J_htt125:r_WH_PTH_GT_150[1,-25,25]'"
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_GT250_htt125:r_WH_PTH_GT_150[1,-25,25]'"
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_0J_htt125:r_WH_PTH_GT_150[1,-25,25]' "
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_GE1J_htt125:r_WH_PTH_GT_150[1,-25,25]' "
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_GT250_htt125:r_WH_PTH_GT_150[1,-25,25]' "
     if 'ZH' in args.analysisStyle:
         MergedSignalNames.append("ZH_PTH_LT_150")
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_0_75_htt125:r_ZH_PTH_LT_150[1,-25,25]'"
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_75_150_htt125:r_ZH_PTH_LT_150[1,-25,25]'"
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_0_75_htt125:r_ZH_PTH_LT_150[1,-25,25]' "
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_75_150_htt125:r_ZH_PTH_LT_150[1,-25,25]' "
         MergedSignalNames.append("ZH_PTH_GT_150")
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_0J_htt125:r_ZH_PTH_GT_150[1,-25,25]'"
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_GE1J_htt125:r_ZH_PTH_GT_150[1,-25,25]'"
-        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_GT250_htt125:r_ZH_PTH_GT_150[1,-25,25]'"
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_0J_htt125:r_ZH_PTH_GT_150[1,-25,25]' "
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_GE1J_htt125:r_ZH_PTH_GT_150[1,-25,25]' "
+        PerMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_GT250_htt125:r_ZH_PTH_GT_150[1,-25,25]' "
 
     PerMergedBinWorkSpaceCommand += CombinedCardName+" -o "+PerMergedBinName+" -m 125"
 
@@ -475,20 +475,20 @@ if args.RunSTXS:
         PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ggZH_PTH_0_200_1J_PTH_120_200_htt125:r_ggH_1J_PTH_120_200[1,-25,25]' "
     if 'WH' in args.analysisStyle:
         AuxMergedSignalNames.append("WH_PTH_LT_150")
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_0_75_htt125:r_WH_PTH_LT_150[1,-25,25]'"
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_75_150_htt125:r_WH_PTH_LT_150[1,-25,25]'"
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_0_75_htt125:r_WH_PTH_LT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_75_150_htt125:r_WH_PTH_LT_150[1,-25,25]' "
         AuxMergedSignalNames.append("WH_PTH_GT_150")
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_0J_htt125:r_WH_PTH_GT_150[1,-25,25]'"
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_GE1J_htt125:r_WH_PTH_GT_150[1,-25,25]'"
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_GT250_htt125:r_WH_PTH_GT_150[1,-25,25]'"
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_0J_htt125:r_WH_PTH_GT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_150_250_GE1J_htt125:r_WH_PTH_GT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_GT250_htt125:r_WH_PTH_GT_150[1,-25,25]' "
     if 'ZH' in args.analysisStyle:
         AuxMergedSignalNames.append("ZH_PTH_LT_150")
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_0_75_htt125:r_ZH_PTH_LT_150[1,-25,25]'"
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_75_150_htt125:r_ZH_PTH_LT_150[1,-25,25]'"
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_0_75_htt125:r_ZH_PTH_LT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_75_150_htt125:r_ZH_PTH_LT_150[1,-25,25]' "
         AuxMergedSignalNames.append("ZH_PTH_GT_150")
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_0J_htt125:r_ZH_PTH_GT_150[1,-25,25]'"
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_GE1J_htt125:r_ZH_PTH_GT_150[1,-25,25]'"
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_GT250_htt125:r_ZH_PTH_GT_150[1,-25,25]'"
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_0J_htt125:r_ZH_PTH_GT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_GE1J_htt125:r_ZH_PTH_GT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_GT250_htt125:r_ZH_PTH_GT_150[1,-25,25]' "
 
     PerAuxMergedBinWorkSpaceCommand += CombinedCardName+" -o "+PerAuxMergedBinName+" -m 125"
 

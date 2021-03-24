@@ -55,7 +55,7 @@ int main(int argc, char **argv)
   // Uncomment this next line to see a *lot* of debug information
   // cb.SetVerbosity(3);
 
-  vector<string> masses = {""};;
+  vector<string> masses = {"125"};
   //! [part3]
   cb.AddObservations({"*"}, {"smh2017"}, {"13TeV"}, {"mt"}, cats);
 
@@ -174,242 +174,242 @@ int main(int argc, char **argv)
   cb.AddProcesses({"*"}, {"smh2017"}, {"13TeV"}, {"mt"}, bkg_procs, cats, false);
 
   vector<string> ggH_STXS;
-  if (Input.OptionExists("-g")) ggH_STXS = {"ggH_htt125"};
+  if (Input.OptionExists("-g")) ggH_STXS = {"ggH_htt"};
   else if (Input.OptionExists("-dp")) ggH_STXS = {
-      "ggH_PTH_0_45_htt125",
-      "ggH_PTH_45_80_htt125",
-      "ggH_PTH_80_120_htt125",
-      "ggH_PTH_120_200_htt125",
-      "ggH_PTH_200_350_htt125",
-      "ggH_PTH_350_450_htt125",
-      "ggH_PTH_GT450_htt125",
+      "ggH_PTH_0_45_htt",
+      "ggH_PTH_45_80_htt",
+      "ggH_PTH_80_120_htt",
+      "ggH_PTH_120_200_htt",
+      "ggH_PTH_200_350_htt",
+      "ggH_PTH_350_450_htt",
+      "ggH_PTH_GT450_htt",
     };
   //NJets differential Option
   else if (Input.OptionExists("-dn")) ggH_STXS = {
-      "ggH_NJETS_0_htt125",
-      "ggH_NJETS_1_htt125",
-      "ggH_NJETS_2_htt125",
-      "ggH_NJETS_3_htt125",
-      "ggH_NJETS_GE4_htt125",
+      "ggH_NJETS_0_htt",
+      "ggH_NJETS_1_htt",
+      "ggH_NJETS_2_htt",
+      "ggH_NJETS_3_htt",
+      "ggH_NJETS_GE4_htt",
     };
   //mjj differential option
   else if (Input.OptionExists("-dm")) ggH_STXS = {
-      "ggH_MJJ_0_150_htt125",
-      "ggH_MJJ_150_300_htt125",
-      "ggH_MJJ_300_450_htt125",
-      "ggH_MJJ_450_600_htt125",
-      "ggH_MJJ_600_1000_htt125",
-      "ggH_MJJ_1000_1400_htt125",
-      "ggH_MJJ_1400_1800_htt125",
-      "ggH_MJJ_GE1800_htt125",
+      "ggH_MJJ_0_150_htt",
+      "ggH_MJJ_150_300_htt",
+      "ggH_MJJ_300_450_htt",
+      "ggH_MJJ_450_600_htt",
+      "ggH_MJJ_600_1000_htt",
+      "ggH_MJJ_1000_1400_htt",
+      "ggH_MJJ_1400_1800_htt",
+      "ggH_MJJ_GE1800_htt",
     };
   else if (Input.OptionExists("-dljpt")) ggH_STXS = {
-      "ggH_LJPT_30_60_htt125",
-      "ggH_LJPT_60_120_htt125",
-      "ggH_LJPT_120_200_htt125",
-      "ggH_LJPT_200_350_htt125",
-      "ggH_LJPT_GT350_htt125",
+      "ggH_LJPT_30_60_htt",
+      "ggH_LJPT_60_120_htt",
+      "ggH_LJPT_120_200_htt",
+      "ggH_LJPT_200_350_htt",
+      "ggH_LJPT_GT350_htt",
     };
-  else ggH_STXS = {"ggH_PTH_0_200_0J_PTH_10_200_htt125",
-		   "ggH_PTH_0_200_0J_PTH_0_10_htt125",
-		   "ggH_PTH_0_200_1J_PTH_0_60_htt125",
-		   "ggH_PTH_0_200_1J_PTH_60_120_htt125",
-		   "ggH_PTH_0_200_1J_PTH_120_200_htt125",
-		   "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125",		   
-		   "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125",		   
-		   "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125",		   
-		   "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125",		   
-		   "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125",
-		   "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125",		   
-		   "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125",		   
-		   "ggH_PTH_200_300_htt125",
-		   "ggH_PTH_300_450_htt125",
-		   "ggH_PTH_450_650_htt125",
-		   "ggH_PTH_GE650_htt125"};
+  else ggH_STXS = {"ggH_PTH_0_200_0J_PTH_10_200_htt",
+		   "ggH_PTH_0_200_0J_PTH_0_10_htt",
+		   "ggH_PTH_0_200_1J_PTH_0_60_htt",
+		   "ggH_PTH_0_200_1J_PTH_60_120_htt",
+		   "ggH_PTH_0_200_1J_PTH_120_200_htt",
+		   "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",		   
+		   "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",		   
+		   "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt",		   
+		   "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt",		   
+		   "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt",
+		   "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt",		   
+		   "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt",		   
+		   "ggH_PTH_200_300_htt",
+		   "ggH_PTH_300_450_htt",
+		   "ggH_PTH_450_650_htt",
+		   "ggH_PTH_GE650_htt"};
   
   vector<string> qqH_STXS; 
-  if(Input.OptionExists("-q")) qqH_STXS = {"qqH_htt125"};
+  if(Input.OptionExists("-q")) qqH_STXS = {"qqH_htt"};
   else if (Input.OptionExists("-dp")) qqH_STXS = {
-      "qqH_PTH_0_45_htt125",
-      "qqH_PTH_45_80_htt125",
-      "qqH_PTH_80_120_htt125",
-      "qqH_PTH_120_200_htt125",
-      "qqH_PTH_200_350_htt125",
-      "qqH_PTH_350_450_htt125",
-      "qqH_PTH_GT450_htt125",
+      "qqH_PTH_0_45_htt",
+      "qqH_PTH_45_80_htt",
+      "qqH_PTH_80_120_htt",
+      "qqH_PTH_120_200_htt",
+      "qqH_PTH_200_350_htt",
+      "qqH_PTH_350_450_htt",
+      "qqH_PTH_GT450_htt",
     };
   //NJets differential Option
   else if (Input.OptionExists("-dn")) qqH_STXS = {
-      "qqH_NJETS_0_htt125",
-      "qqH_NJETS_1_htt125",
-      "qqH_NJETS_2_htt125",
-      "qqH_NJETS_3_htt125",
-      "qqH_NJETS_GE4_htt125",
+      "qqH_NJETS_0_htt",
+      "qqH_NJETS_1_htt",
+      "qqH_NJETS_2_htt",
+      "qqH_NJETS_3_htt",
+      "qqH_NJETS_GE4_htt",
     };
   //mjj differential option
   else if (Input.OptionExists("-dm")) qqH_STXS = {
-      "qqH_MJJ_0_150_htt125",
-      "qqH_MJJ_150_300_htt125",
-      "qqH_MJJ_300_450_htt125",
-      "qqH_MJJ_450_600_htt125",
-      "qqH_MJJ_600_1000_htt125",
-      "qqH_MJJ_1000_1400_htt125",
-      "qqH_MJJ_1400_1800_htt125",
-      "qqH_MJJ_GE1800_htt125",
+      "qqH_MJJ_0_150_htt",
+      "qqH_MJJ_150_300_htt",
+      "qqH_MJJ_300_450_htt",
+      "qqH_MJJ_450_600_htt",
+      "qqH_MJJ_600_1000_htt",
+      "qqH_MJJ_1000_1400_htt",
+      "qqH_MJJ_1400_1800_htt",
+      "qqH_MJJ_GE1800_htt",
     };
   else if (Input.OptionExists("-dljpt")) qqH_STXS = {
-      "qqH_LJPT_30_60_htt125",
-      "qqH_LJPT_60_120_htt125",
-      "qqH_LJPT_120_200_htt125",
-      "qqH_LJPT_200_350_htt125",
-      "qqH_LJPT_GT350_htt125",
+      "qqH_LJPT_30_60_htt",
+      "qqH_LJPT_60_120_htt",
+      "qqH_LJPT_120_200_htt",
+      "qqH_LJPT_200_350_htt",
+      "qqH_LJPT_GT350_htt",
     };
-  else qqH_STXS = {"qqH_0J_htt125",
-		   "qqH_1J_htt125",
-		   "qqH_GE2J_MJJ_0_60_htt125",
-		   "qqH_GE2J_MJJ_60_120_htt125",
-		   "qqH_GE2J_MJJ_120_350_htt125",
-		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125",
-		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125",
-		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125",
-		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125",
-		   "qqH_GE2J_MJJ_GE350_PTH_GE200_htt125"};
+  else qqH_STXS = {"qqH_0J_htt",
+		   "qqH_1J_htt",
+		   "qqH_GE2J_MJJ_0_60_htt",
+		   "qqH_GE2J_MJJ_60_120_htt",
+		   "qqH_GE2J_MJJ_120_350_htt",
+		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt",
+		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt",
+		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt",
+		   "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt",
+		   "qqH_GE2J_MJJ_GE350_PTH_GE200_htt"};
 
   vector<string> WH_STXS;
-  if (Input.OptionExists("-q")) WH_STXS = {"WH_lep_htt125","WH_had_htt125"};
+  if (Input.OptionExists("-q")) WH_STXS = {"WH_lep_htt","WH_had_htt"};
   else if (Input.OptionExists("-dp")) WH_STXS = {
-      "WH_PTH_0_45_htt125",
-      "WH_PTH_45_80_htt125",
-      "WH_PTH_80_120_htt125",
-      "WH_PTH_120_200_htt125",
-      "WH_PTH_200_350_htt125",
-      "WH_PTH_350_450_htt125",
-      "WH_PTH_GT450_htt125",
+      "WH_PTH_0_45_htt",
+      "WH_PTH_45_80_htt",
+      "WH_PTH_80_120_htt",
+      "WH_PTH_120_200_htt",
+      "WH_PTH_200_350_htt",
+      "WH_PTH_350_450_htt",
+      "WH_PTH_GT450_htt",
     };
   //NJets differential Option
   else if (Input.OptionExists("-dn")) WH_STXS = {
-      "WH_NJETS_0_htt125",
-      "WH_NJETS_1_htt125",
-      "WH_NJETS_2_htt125",
-      "WH_NJETS_3_htt125",
-      "WH_NJETS_GE4_htt125",
+      "WH_NJETS_0_htt",
+      "WH_NJETS_1_htt",
+      "WH_NJETS_2_htt",
+      "WH_NJETS_3_htt",
+      "WH_NJETS_GE4_htt",
     };
   //mjj differential option
   else if (Input.OptionExists("-dm")) WH_STXS = {
-      "WH_MJJ_0_150_htt125",
-      "WH_MJJ_150_300_htt125",
-      "WH_MJJ_300_450_htt125",
-      "WH_MJJ_450_600_htt125",
-      "WH_MJJ_600_1000_htt125",
-      "WH_MJJ_1000_1400_htt125",
-      "WH_MJJ_1400_1800_htt125",
-      "WH_MJJ_GE1800_htt125",
+      "WH_MJJ_0_150_htt",
+      "WH_MJJ_150_300_htt",
+      "WH_MJJ_300_450_htt",
+      "WH_MJJ_450_600_htt",
+      "WH_MJJ_600_1000_htt",
+      "WH_MJJ_1000_1400_htt",
+      "WH_MJJ_1400_1800_htt",
+      "WH_MJJ_GE1800_htt",
     };
   else if (Input.OptionExists("-dljpt")) WH_STXS = {
-      "WH_LJPT_30_60_htt125",
-      "WH_LJPT_60_120_htt125",
-      "WH_LJPT_120_200_htt125",
-      "WH_LJPT_200_350_htt125",
-      "WH_LJPT_GT350_htt125",
+      "WH_LJPT_30_60_htt",
+      "WH_LJPT_60_120_htt",
+      "WH_LJPT_120_200_htt",
+      "WH_LJPT_200_350_htt",
+      "WH_LJPT_GT350_htt",
     };
   else WH_STXS = {
-      "WH_lep_PTV_0_75_htt125",
-      "WH_lep_PTV_75_150_htt125",
-      "WH_lep_PTV_150_250_0J_htt125",
-      "WH_lep_PTV_150_250_GE1J_htt125",
-      "WH_lep_PTV_GT250_htt125",
-      "WH_0J_htt125",
-      "WH_1J_htt125",
-      "WH_GE2J_MJJ_0_60_htt125",
-      "WH_GE2J_MJJ_60_120_htt125",
-      "WH_GE2J_MJJ_120_350_htt125",
-      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125",
-      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125",
-      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125",
-      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125",
-      "WH_GE2J_MJJ_GE350_PTH_GE200_htt125",
+      "WH_lep_PTV_0_75_htt",
+      "WH_lep_PTV_75_150_htt",
+      "WH_lep_PTV_150_250_0J_htt",
+      "WH_lep_PTV_150_250_GE1J_htt",
+      "WH_lep_PTV_GT250_htt",
+      "WH_0J_htt",
+      "WH_1J_htt",
+      "WH_GE2J_MJJ_0_60_htt",
+      "WH_GE2J_MJJ_60_120_htt",
+      "WH_GE2J_MJJ_120_350_htt",
+      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt",
+      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt",
+      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt",
+      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt",
+      "WH_GE2J_MJJ_GE350_PTH_GE200_htt",
     };
 
   vector<string> ZH_STXS;
-  if (Input.OptionExists("-q")) ZH_STXS = {"ZH_lep_htt125","ZH_had_htt125"};
+  if (Input.OptionExists("-q")) ZH_STXS = {"ZH_lep_htt","ZH_had_htt"};
   else if (Input.OptionExists("-dp")) ZH_STXS = {
-      "ZH_PTH_0_45_htt125",
-      "ZH_PTH_45_80_htt125",
-      "ZH_PTH_80_120_htt125",
-      "ZH_PTH_120_200_htt125",
-      "ZH_PTH_200_350_htt125",
-      "ZH_PTH_350_450_htt125",
-      "ZH_PTH_GT450_htt125",
+      "ZH_PTH_0_45_htt",
+      "ZH_PTH_45_80_htt",
+      "ZH_PTH_80_120_htt",
+      "ZH_PTH_120_200_htt",
+      "ZH_PTH_200_350_htt",
+      "ZH_PTH_350_450_htt",
+      "ZH_PTH_GT450_htt",
     };
   //NJets differential Option
   else if (Input.OptionExists("-dn")) ZH_STXS = {
-      "ZH_NJETS_0_htt125",
-      "ZH_NJETS_1_htt125",
-      "ZH_NJETS_2_htt125",
-      "ZH_NJETS_3_htt125",
-      "ZH_NJETS_GE4_htt125",
+      "ZH_NJETS_0_htt",
+      "ZH_NJETS_1_htt",
+      "ZH_NJETS_2_htt",
+      "ZH_NJETS_3_htt",
+      "ZH_NJETS_GE4_htt",
     };
   //mjj differential option
   else if (Input.OptionExists("-dm")) ZH_STXS = {
-      "ZH_MJJ_0_150_htt125",
-      "ZH_MJJ_150_300_htt125",
-      "ZH_MJJ_300_450_htt125",
-      "ZH_MJJ_450_600_htt125",
-      "ZH_MJJ_600_1000_htt125",
-      "ZH_MJJ_1000_1400_htt125",
-      "ZH_MJJ_1400_1800_htt125",
-      "ZH_MJJ_GE1800_htt125",
+      "ZH_MJJ_0_150_htt",
+      "ZH_MJJ_150_300_htt",
+      "ZH_MJJ_300_450_htt",
+      "ZH_MJJ_450_600_htt",
+      "ZH_MJJ_600_1000_htt",
+      "ZH_MJJ_1000_1400_htt",
+      "ZH_MJJ_1400_1800_htt",
+      "ZH_MJJ_GE1800_htt",
     };
   else if (Input.OptionExists("-dljpt")) ZH_STXS = {
-      "ZH_LJPT_30_60_htt125",
-      "ZH_LJPT_60_120_htt125",
-      "ZH_LJPT_120_200_htt125",
-      "ZH_LJPT_200_350_htt125",
-      "ZH_LJPT_GT350_htt125",
+      "ZH_LJPT_30_60_htt",
+      "ZH_LJPT_60_120_htt",
+      "ZH_LJPT_120_200_htt",
+      "ZH_LJPT_200_350_htt",
+      "ZH_LJPT_GT350_htt",
     };
   else ZH_STXS = {
-      "ZH_lep_PTV_0_75_htt125",
-      "ZH_lep_PTV_75_150_htt125",
-      "ZH_lep_PTV_150_250_0J_htt125",
-      "ZH_lep_PTV_150_250_GE1J_htt125",
-      "ZH_lep_PTV_GT250_htt125",
-      "ZH_0J_htt125",
-      "ZH_1J_htt125",
-      "ZH_GE2J_MJJ_0_60_htt125",
-      "ZH_GE2J_MJJ_60_120_htt125",
-      "ZH_GE2J_MJJ_120_350_htt125",
-      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125",
-      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125",
-      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125",
-      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125",
-      "ZH_GE2J_MJJ_GE350_PTH_GE200_htt125",
+      "ZH_lep_PTV_0_75_htt",
+      "ZH_lep_PTV_75_150_htt",
+      "ZH_lep_PTV_150_250_0J_htt",
+      "ZH_lep_PTV_150_250_GE1J_htt",
+      "ZH_lep_PTV_GT250_htt",
+      "ZH_0J_htt",
+      "ZH_1J_htt",
+      "ZH_GE2J_MJJ_0_60_htt",
+      "ZH_GE2J_MJJ_60_120_htt",
+      "ZH_GE2J_MJJ_120_350_htt",
+      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt",
+      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt",
+      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt",
+      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt",
+      "ZH_GE2J_MJJ_GE350_PTH_GE200_htt",
     };
 
   vector<string> ggZH_STXS;
-  if (Input.OptionExists("-g")) ggZH_STXS = {"ggZH_lep_htt125","ggZH_had_htt125"};
+  if (Input.OptionExists("-g")) ggZH_STXS = {"ggZH_lep_htt","ggZH_had_htt"};
   else if (Input.OptionExists("-dm")||Input.OptionExists("-dp")||Input.OptionExists("-dn")||Input.OptionExists("-dljpt")) ggZH_STXS = {};
   else ggZH_STXS = {
-      "ggZH_lep_PTV_0_75_htt125",
-      "ggZH_lep_PTV_75_150_htt125",
-      "ggZH_lep_PTV_150_250_0J_htt125",
-      "ggZH_lep_PTV_150_250_GE1J_htt125",
-      "ggZH_lep_PTV_GT250_htt125",
-      "ggZH_PTH_0_200_0J_PTH_10_200_htt125",
-      "ggZH_PTH_0_200_0J_PTH_0_10_htt125",
-      "ggZH_PTH_0_200_1J_PTH_0_60_htt125",
-      "ggZH_PTH_0_200_1J_PTH_60_120_htt125",
-      "ggZH_PTH_0_200_1J_PTH_120_200_htt125",
-      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125",
-      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125",
-      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125",
-      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125",
-      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125",
-      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125",
-      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125",
-      "ggZH_PTH_200_300_htt125",
-      "ggZH_PTH_300_450_htt125",
-      "ggZH_PTH_450_650_htt125",
-      "ggZH_PTH_GE650_htt125"
+      "ggZH_lep_PTV_0_75_htt",
+      "ggZH_lep_PTV_75_150_htt",
+      "ggZH_lep_PTV_150_250_0J_htt",
+      "ggZH_lep_PTV_150_250_GE1J_htt",
+      "ggZH_lep_PTV_GT250_htt",
+      "ggZH_PTH_0_200_0J_PTH_10_200_htt",
+      "ggZH_PTH_0_200_0J_PTH_0_10_htt",
+      "ggZH_PTH_0_200_1J_PTH_0_60_htt",
+      "ggZH_PTH_0_200_1J_PTH_60_120_htt",
+      "ggZH_PTH_0_200_1J_PTH_120_200_htt",
+      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",
+      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",
+      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt",
+      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt",
+      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt",
+      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt",
+      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt",
+      "ggZH_PTH_200_300_htt",
+      "ggZH_PTH_300_450_htt",
+      "ggZH_PTH_450_650_htt",
+      "ggZH_PTH_GE650_htt"
     };
 
   vector<string> sig_procs = ch::JoinStr({ggH_STXS,
@@ -484,146 +484,146 @@ int main(int argc, char **argv)
 
   if(not (Input.OptionExists("-x1")))
     {
-      cb.cp().process({"ggH_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.002,0.998));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.006,0.997));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.000,0.998));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.954,1.026));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.069,0.956));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_200_300_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_300_450_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_450_650_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_GE650_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"qqH_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.027,0.986));
-      cb.cp().process({"qqH_0J_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.022,0.991));
-      cb.cp().process({"qqH_1J_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.041,0.974));
-      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt125"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"ggH_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.971,1.024));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.983,1.004));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.952,1.037));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,1.025));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.952,1.036));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.122,0.929));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.026,0.977));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.043,0.957));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_200_300_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.925,1.075));
-      cb.cp().process({"ggH_PTH_300_450_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.920,1.087));
-      cb.cp().process({"ggH_PTH_450_650_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.084,0.955));
-      cb.cp().process({"ggH_PTH_GE650_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"qqH_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.011,0.994));
-      cb.cp().process({"qqH_0J_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,1.011));
-      cb.cp().process({"qqH_1J_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.011,0.995));
-      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.909,1.012));
-      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.000,0.952));
-      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.009,0.986));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.169,0.926));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.120,0.934));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt125"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"ggH_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.017,0.977));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.038,0.984));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.013,0.996));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.033,0.979));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.041,0.955));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,0.983));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.012,0.979));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.027,0.972));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.082,0.907));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.047,0.909));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_200_300_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.038,0.975));
-      cb.cp().process({"ggH_PTH_300_450_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.978,1.001));
-      cb.cp().process({"ggH_PTH_450_650_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.054,0.941));
-      cb.cp().process({"ggH_PTH_GE650_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"qqH_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.985,1.013));
-      cb.cp().process({"qqH_0J_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_1J_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.053,0.964));
-      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.943,1.033));
-      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.969,1.020));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.898,1.081));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.031,0.997));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt125"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"ggH_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.061,0.957));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.037,0.973));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.023,0.977));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.205,0.885));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.039,0.974));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.088,0.924));
-      cb.cp().process({"ggH_PTH_200_300_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.073,0.944));
-      cb.cp().process({"ggH_PTH_300_450_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_450_650_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_GE650_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"qqH_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.986,1.009));
-      cb.cp().process({"qqH_0J_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_1J_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.026,0.995));
-      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.957,1.031));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.960,1.023));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.976,1.004));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.984,1.010));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.009,0.994));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt125"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.004,0.994));
-      cb.cp().process({"ggH_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.099,0.961));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.006,0.997));
-      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"ggH_PTH_200_300_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.099,0.961));
-      cb.cp().process({"ggH_PTH_300_450_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.081,0.972));
-      cb.cp().process({"ggH_PTH_450_650_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.177,0.911));
-      cb.cp().process({"ggH_PTH_GE650_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
-      cb.cp().process({"qqH_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.978,1.008));
-      cb.cp().process({"qqH_0J_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_1J_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.038,0.980));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
-      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt125"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,1.005));
+      cb.cp().process({"ggH_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.002,0.998));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.006,0.997));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.000,0.998));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.954,1.026));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.069,0.956));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_200_300_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_300_450_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_450_650_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_GE650_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"qqH_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.027,0.986));
+      cb.cp().process({"qqH_0J_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.022,0.991));
+      cb.cp().process({"qqH_1J_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.041,0.974));
+      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"ggH_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.971,1.024));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.983,1.004));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.952,1.037));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,1.025));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.952,1.036));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.122,0.929));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.026,0.977));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.043,0.957));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_200_300_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.925,1.075));
+      cb.cp().process({"ggH_PTH_300_450_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.920,1.087));
+      cb.cp().process({"ggH_PTH_450_650_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.084,0.955));
+      cb.cp().process({"ggH_PTH_GE650_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"qqH_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.011,0.994));
+      cb.cp().process({"qqH_0J_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,1.011));
+      cb.cp().process({"qqH_1J_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.011,0.995));
+      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.909,1.012));
+      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.000,0.952));
+      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.009,0.986));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.169,0.926));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.120,0.934));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt"}).bin({"mt_boosted_1J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"ggH_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.017,0.977));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.038,0.984));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.013,0.996));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.033,0.979));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.041,0.955));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,0.983));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.012,0.979));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.027,0.972));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.082,0.907));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.047,0.909));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_200_300_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.038,0.975));
+      cb.cp().process({"ggH_PTH_300_450_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.978,1.001));
+      cb.cp().process({"ggH_PTH_450_650_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.054,0.941));
+      cb.cp().process({"ggH_PTH_GE650_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"qqH_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.985,1.013));
+      cb.cp().process({"qqH_0J_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_1J_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.053,0.964));
+      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.943,1.033));
+      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.969,1.020));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.898,1.081));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.031,0.997));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt"}).bin({"mt_boosted_GE2J"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"ggH_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.061,0.957));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.037,0.973));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.023,0.977));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.205,0.885));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.039,0.974));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.088,0.924));
+      cb.cp().process({"ggH_PTH_200_300_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.073,0.944));
+      cb.cp().process({"ggH_PTH_300_450_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_450_650_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_GE650_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"qqH_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.986,1.009));
+      cb.cp().process({"qqH_0J_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_1J_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.026,0.995));
+      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.957,1.031));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.960,1.023));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.976,1.004));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.984,1.010));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.009,0.994));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt"}).bin({"mt_vbf_PTH_0_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.004,0.994));
+      cb.cp().process({"ggH_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.099,0.961));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_10_200_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.006,0.997));
+      cb.cp().process({"ggH_PTH_0_200_0J_PTH_0_10_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_0_60_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_60_120_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_1J_PTH_120_200_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"ggH_PTH_200_300_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.099,0.961));
+      cb.cp().process({"ggH_PTH_300_450_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.081,0.972));
+      cb.cp().process({"ggH_PTH_450_650_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.177,0.911));
+      cb.cp().process({"ggH_PTH_GE650_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.00));
+      cb.cp().process({"qqH_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.978,1.008));
+      cb.cp().process({"qqH_0J_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_1J_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_0_60_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_60_120_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_120_350_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(1.038,0.980));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",SystMap<>::init(1.0));
+      cb.cp().process({"qqH_GE2J_MJJ_GE350_PTH_GE200_htt"}).bin({"mt_vbf_PTH_GE_200"}).AddSyst(cb,"CMS_pythia_scale","lnN",ch::syst::SystMapAsymm<>::init(0.980,1.005));
     }
 
 //pdf acceptance uncertainties
@@ -1262,15 +1262,15 @@ int main(int argc, char **argv)
       //inclusive shapes
       /*
       AddShapesIfNotEmpty({"ggH_scale"},
-			  {"ggH_htt125",
-			      "ggZH_had_htt125"},
+			  {"ggH_htt",
+			      "ggZH_had_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"vbf_scale"},
-			  {"qqH_htt125"},
+			  {"qqH_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1278,22 +1278,22 @@ int main(int argc, char **argv)
 			  );
       */
       AddShapesIfNotEmpty({"VH_scale"},
-			  {"WH_had_htt125",
-			      "ZH_had_htt125"},
+			  {"WH_had_htt",
+			      "ZH_had_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"WHlep_scale"},
-			  {"WH_lep_htt125"},
+			  {"WH_lep_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ZHlep_scale"},
-			  {"ZH_lep_htt125"},
+			  {"ZH_lep_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1302,68 +1302,68 @@ int main(int argc, char **argv)
 
             //individual STXS bin shapes
       AddShapesIfNotEmpty({"ggH_scale_0jet"},
-			  {"ggH_PTH_0_200_0J_PTH_10_200_htt125",
-			      "ggH_PTH_0_200_0J_PTH_0_10_htt125",
-			      "ggZH_PTH_0_200_0J_PTH_10_200_htt125",
-			      "ggZH_PTH_0_200_0J_PTH_0_10_htt125"},
+			  {"ggH_PTH_0_200_0J_PTH_10_200_htt",
+			      "ggH_PTH_0_200_0J_PTH_0_10_htt",
+			      "ggZH_PTH_0_200_0J_PTH_10_200_htt",
+			      "ggZH_PTH_0_200_0J_PTH_0_10_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ggH_scale_1jet_lowpt"},
-			  {"ggH_PTH_0_200_1J_PTH_0_60_htt125",
-			      "ggH_PTH_0_200_1J_PTH_60_120_htt125",
-			      "ggH_PTH_0_200_1J_PTH_120_200_htt125",
-			      "ggZH_PTH_0_200_1J_PTH_0_60_htt125",
-			      "ggZH_PTH_0_200_1J_PTH_60_120_htt125",
-			      "ggZH_PTH_0_200_1J_PTH_120_200_htt125"},
+			  {"ggH_PTH_0_200_1J_PTH_0_60_htt",
+			      "ggH_PTH_0_200_1J_PTH_60_120_htt",
+			      "ggH_PTH_0_200_1J_PTH_120_200_htt",
+			      "ggZH_PTH_0_200_1J_PTH_0_60_htt",
+			      "ggZH_PTH_0_200_1J_PTH_60_120_htt",
+			      "ggZH_PTH_0_200_1J_PTH_120_200_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ggH_scale_2jet_lowpt"},
-			  {"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125",		   
-			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125",		   
-			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125"
-			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt125",		   
-			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt125",		   
-			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt125"},
+			  {"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",		   
+			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",		   
+			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"
+			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",		   
+			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",		   
+			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ggH_scale_vbf"},
-			  {"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125",
-			      "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125",
-			      "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125",
-			      "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125",
-			      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt125",
-			      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt125",
-			      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt125",
-			      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt125"},
+			  {"ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt",
+			      "ggH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt",
+			      "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt",
+			      "ggH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt",
+			      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_0_25_htt",
+			      "ggZH_PTH_0_200_GE2J_MJJ_350_700_PTHJJ_GE25_htt",
+			      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_0_25_htt",
+			      "ggZH_PTH_0_200_GE2J_MJJ_GE700_PTHJJ_GE25_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ggH_scale_highpt"},
-			  {"ggH_PTH_200_300_htt125",
-			      "ggH_PTH_300_450_htt125",
-			      "ggZH_PTH_200_300_htt125",
-			      "ggZH_PTH_300_450_htt125"},
+			  {"ggH_PTH_200_300_htt",
+			      "ggH_PTH_300_450_htt",
+			      "ggZH_PTH_200_300_htt",
+			      "ggZH_PTH_300_450_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ggH_scale_very_highpt"},
-			  {"ggH_PTH_450_650_htt125",
-			      "ggH_PTH_GE650_htt125",
-			      "ggZH_PTH_450_650_htt125",
-			      "ggZH_PTH_GE650_htt125"},
+			  {"ggH_PTH_450_650_htt",
+			      "ggH_PTH_GE650_htt",
+			      "ggZH_PTH_450_650_htt",
+			      "ggZH_PTH_GE650_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1371,23 +1371,23 @@ int main(int argc, char **argv)
 			  );
 
       AddShapesIfNotEmpty({"vbf_scale_0jet"},
-			  {"qqH_0J_htt125"},
+			  {"qqH_0J_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"vbf_scale_1jet"},
-			  {"qqH_1J_htt125"},
+			  {"qqH_1J_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"vbf_scale_lowmjj"},
-			  {"qqH_GE2J_MJJ_0_60_htt125",
-			      "qqH_GE2J_MJJ_60_120_htt125",
-			      "qqH_GE2J_MJJ_120_350_htt125"},
+			  {"qqH_GE2J_MJJ_0_60_htt",
+			      "qqH_GE2J_MJJ_60_120_htt",
+			      "qqH_GE2J_MJJ_120_350_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1395,10 +1395,10 @@ int main(int argc, char **argv)
 			  );
 
       AddShapesIfNotEmpty({"vbf_scale_highmjj_lowpt"},
-			  {"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125",
-			      "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125",
-			      "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125",
-			      "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125"},
+			  {"qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt",
+			      "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt",
+			      "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt",
+			      "qqH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1406,7 +1406,7 @@ int main(int argc, char **argv)
 			  );
 
       AddShapesIfNotEmpty({"vbf_scale_highmjj_highpt"},
-			  {"qqH_GE2J_MJJ_GE350_PTH_GE200_htt125"},
+			  {"qqH_GE2J_MJJ_GE350_PTH_GE200_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1414,28 +1414,28 @@ int main(int argc, char **argv)
 			  );
 
       AddShapesIfNotEmpty({"VH_scale_0jet"},
-			  {"WH_0J_htt125",
-			      "ZH_0J_htt125,"},
+			  {"WH_0J_htt",
+			      "ZH_0J_htt,"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"VH_scale_1jet"},
-			  {"WH_1J_htt125",
-			      "ZH_1J_htt125"},
+			  {"WH_1J_htt",
+			      "ZH_1J_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"VH_scale_lowmjj"},
-			  {"WH_GE2J_MJJ_0_60_htt125",
-			      "WH_GE2J_MJJ_60_120_htt125",
-			      "WH_GE2J_MJJ_120_350_htt125",
-			      "ZH_GE2J_MJJ_0_60_htt125",
-			      "ZH_GE2J_MJJ_60_120_htt125",
-			      "ZH_GE2J_MJJ_120_350_htt125"},
+			  {"WH_GE2J_MJJ_0_60_htt",
+			      "WH_GE2J_MJJ_60_120_htt",
+			      "WH_GE2J_MJJ_120_350_htt",
+			      "ZH_GE2J_MJJ_0_60_htt",
+			      "ZH_GE2J_MJJ_60_120_htt",
+			      "ZH_GE2J_MJJ_120_350_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1443,14 +1443,14 @@ int main(int argc, char **argv)
 			  );
 
       AddShapesIfNotEmpty({"VH_scale_highmjj_lowpt"},
-			  {"WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125",
-			      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125",
-			      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125",
-			      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125",
-			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt125",
-			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt125",
-			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt125",
-			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt125"},
+			  {"WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt",
+			      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt",
+			      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt",
+			      "WH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt",
+			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_0_25_htt",
+			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_350_700_PTHJJ_GE25_htt",
+			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_0_25_htt",
+			      "ZH_GE2J_MJJ_GE350_PTH_0_200_MJJ_GE700_PTHJJ_GE25_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1458,8 +1458,8 @@ int main(int argc, char **argv)
 			  );
 
       AddShapesIfNotEmpty({"VH_scale_highmjj_highpt"},
-			  {"WH_GE2J_MJJ_GE350_PTH_GE200_htt125",
-			      "ZH_GE2J_MJJ_GE350_PTH_GE200_htt125"},
+			  {"WH_GE2J_MJJ_GE350_PTH_GE200_htt",
+			      "ZH_GE2J_MJJ_GE350_PTH_GE200_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
@@ -1467,24 +1467,24 @@ int main(int argc, char **argv)
 			  );
       
       AddShapesIfNotEmpty({"WH_scale_lowpt"},
-			  {"WH_lep_PTV_0_75_htt125",
-			  "WH_lep_PTV_75_150_htt125",
-			  "WH_lep_PTV_150_250_0J_htt125",
-			  "WH_lep_PTV_150_250_GE1J_htt125"},
+			  {"WH_lep_PTV_0_75_htt",
+			  "WH_lep_PTV_75_150_htt",
+			  "WH_lep_PTV_150_250_0J_htt",
+			  "WH_lep_PTV_150_250_GE1J_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,
 			  CategoryArgs
 			  );
       AddShapesIfNotEmpty({"ZH_scale_lowpt"},
-			  {"ZH_lep_PTV_0_75_htt125",
-			  "ZH_lep_PTV_75_150_htt125",
-			  "ZH_lep_PTV_150_250_0J_htt125",
-			  "ZH_lep_PTV_150_250_GE1J_htt125",
-			  "ggZH_lep_PTV_0_75_htt125",
-			  "ggZH_lep_PTV_75_150_htt125",
-			  "ggZH_lep_PTV_150_250_0J_htt125",
-			  "ggZH_lep_PTV_150_250_GE1J_htt125"},
+			  {"ZH_lep_PTV_0_75_htt",
+			  "ZH_lep_PTV_75_150_htt",
+			  "ZH_lep_PTV_150_250_0J_htt",
+			  "ZH_lep_PTV_150_250_GE1J_htt",
+			  "ggZH_lep_PTV_0_75_htt",
+			  "ggZH_lep_PTV_75_150_htt",
+			  "ggZH_lep_PTV_150_250_0J_htt",
+			  "ggZH_lep_PTV_150_250_GE1J_htt"},
 			  &cb,
 			  1.00,
 			  TheFile,

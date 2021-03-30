@@ -21,18 +21,18 @@ class FiducialNJETS(PhysicsModel):
         self.modelBuilder.factory_('expr::scale_1("@0*@1",mu_fid,rho_1)')
         self.modelBuilder.factory_('expr::scale_2("@0*@1",mu_fid,rho_2)')
         self.modelBuilder.factory_('expr::scale_3("@0*@1",mu_fid,rho_3)')
-        self.modelBuilder.factory_('expr::scale_GE4("@0*(485.9-@1*250.2-@2*139.1-@3*69.8-@4*19.3)/7.425",mu_fid,rho_0,rho_1,rho_2,rho_3)')
+        self.modelBuilder.factory_('expr::scale_GE4("@0*(408.46-@1*168.14-@2*137.93-@3*71.10-@4*21.12)/10.16",mu_fid,rho_0,rho_1,rho_2,rho_3)')
     def getYieldScale(self,bin,process):
         "Return the name of a RooAbsReal to scale this yield by or the two special values 1 and 0 (don't scale, and set to zero)"
-	if re.search("NJETS_0",process):
+	if re.search("NJ_0",process):
 	   return "scale_0"
-        if re.search("NJETS_1",process):
+        if re.search("NJ_1",process):
            return "scale_1"
-        if re.search("NJETS_2",process):
+        if re.search("NJ_2",process):
            return "scale_2"
-        if re.search("NJETS_3",process):
+        if re.search("NJ_3",process):
            return "scale_3"
-        if re.search("NJETS_GE4",process):
+        if re.search("NJ_GE4",process):
            return "scale_GE4"
         return 1
 

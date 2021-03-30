@@ -40,6 +40,17 @@ parameters_STXS = {
         'SMXS_mu_up': 0.0294,
         'SMXS_mu_down':0.0294,
         },
+    #UPDATE ME WITH REAL NUMBERS
+    'r_VH':{
+        'SMXS':41.451,
+        'mu_value':1.0,
+        'uncert_down':1.0,
+        'uncert_up':1.0,
+        'color': ROOT.kGreen+1,
+        'axis':'VH#rightarrow#tau#tau',
+        'SMXS_mu_up': 0.02,
+        'SMXS_mu_down': 0.02,
+    },
     'r_ggH_0J':{
         'SMXS': 1752.942,
         'mu_value':-0.55,
@@ -150,9 +161,50 @@ parameters_STXS = {
         'SMXS_mu_up': 0.03426,
         'SMXS_mu_down': 0.03426,        
     },    
+    #UPDATE ME WITH REAL NUMBERS
+    'r_WH_LowPt':{
+        'SMXS':20.5715,
+        'mu_value':1.0,
+        'uncert_down':1.0,
+        'uncert_up':1.0,
+        'color':ROOT.kGreen+1,
+        'axis':'WH: p_{T}^{H} < 150',
+        'SMXS_mu_up': 0.025,
+        'SMXS_mu_down':0.025,
+    },
+    'r_WH_HighPt':{
+        'SMXS':3.30085,
+        'mu_value':1.0,
+        'uncert_down':1.0,
+        'uncert_up':1.0,
+        'color':ROOT.kGreen+1,
+        'axis':'WH: p_{T}^{H} > 150',
+        'SMXS_mu_up':0.025,
+        'SMXS_mu_down':0.025,
+    },
+    'r_ZH_LowPt':{
+        'SMXS':10.6177,
+        'mu_value': 1.0,
+        'uncert_down':1.0,
+        'uncert_up':1.0,
+        'color':ROOT.kGreen+1,
+        'axis':'ZH: p_{T}^{H} < 150',
+        'SMXS_mu_up':0.025,
+        'SMXS_mu_down':0.025,
+    },
+    'r_ZH_HighPt':{
+        'SMXS':1.71850,
+        'mu_value':1.0,
+        'uncert_down':1.0,
+        'uncert_up':1.0,
+        'color':ROOT.kGreen+1,
+        'axis':'ZH: p_{T}^{H} > 150',
+        'SMXS_mu_up':0.025,
+        'SMXS_mu_down':0.025,
+    },
 }
 
-parameterOrder = ['r','r_ggH','r_qqH',
+parameterOrder = ['r','r_ggH','r_qqH','r_VH',
                   'r_ggH_0J',
                   'r_ggH_1J_PTH_0_60',
                   'r_ggH_1J_PTH_60_120',
@@ -163,8 +215,13 @@ parameterOrder = ['r','r_ggH','r_qqH',
                   'r_qqH_NONVBFTOPO',
                   'r_qqH_GE2J_MJJ_350_700_PTH_0_200',
                   'r_qqH_GE2J_MJJ_GE700_PTH_0_200', 
-                  'r_qqH_BSM',]
-latexAlignments = [10000,10000,900,
+                  'r_qqH_BSM',
+                  'r_WH_LowPt',
+                  'r_WH_HighPt',
+                  'r_ZH_LowPt',
+                  'r_ZH_HighPt',]
+
+latexAlignments = [10000,10000,900, 50,
                    5000,
                    1300,
                    2000,
@@ -175,7 +232,11 @@ latexAlignments = [10000,10000,900,
                    1800,
                    100,
                    150,
-                   25,]
+                   25,
+                   20,
+                   20,
+                   20,
+                   20,]
 
 ggHParameters = [
     'r_ggH_0J',
@@ -192,6 +253,11 @@ qqHParameters= [
     'r_qqH_GE2J_MJJ_GE700_PTH_0_200', 
     'r_qqH_BSM',
 ]
+VHParameters = [
+    'r_WH_LowPt',
+    'r_WH_HighPt',
+    'r_ZH_LowPt',
+    'r_ZH_HighPt',]
 
 #parser = argparse.ArgumentParser(description = 'Create a fancy cross section plot table ')
 #args = parser.parse_args()
@@ -264,9 +330,18 @@ qqHGraph.SetLineColor(parameters_STXS['r_qqH']['color'])
 qqHGraph.SetMarkerStyle(21)
 qqHGraph.SetLineWidth(3)
 
+VHGraph = ROOT.TGraphAsymmErrors(1)
+VHGraph.SetPoint(0,3.5,parameters_STXS['r_VH']['SMXS']*parameters_STXS['r_VH']['mu_value'])
+VHGraph.SetPointEYlow(0,parameters_STXS['r_VH']['SMXS']*parameters_STXS['r_VH']['uncert_down'])
+VHGraph.SetPointEYhigh(0,parameters_STXS['r_VH']['SMXS']*parameters_STXS['r_VH']['uncert_up'])
+VHGraph.SetMarkerColor(parameters_STXS['r_VH']['color'])
+VHGraph.SetLineColor(parameters_STXS['r_VH']['color'])
+VHGraph.SetMarkerStyle(21)
+VHGraph.SetLineWidth(3)
+
 ggHSTXS = ROOT.TGraphAsymmErrors(len(ggHParameters))
 for ggHParameterIndex in range(len(ggHParameters)):
-    ggHSTXS.SetPoint(ggHParameterIndex,ggHParameterIndex+3.5,parameters_STXS[ggHParameters[ggHParameterIndex]]['SMXS']*parameters_STXS[ggHParameters[ggHParameterIndex]]['mu_value'])
+    ggHSTXS.SetPoint(ggHParameterIndex,ggHParameterIndex+4.5,parameters_STXS[ggHParameters[ggHParameterIndex]]['SMXS']*parameters_STXS[ggHParameters[ggHParameterIndex]]['mu_value'])
     ggHSTXS.SetPointEYlow(ggHParameterIndex,parameters_STXS[ggHParameters[ggHParameterIndex]]['SMXS']*parameters_STXS[ggHParameters[ggHParameterIndex]]['uncert_down'])
     ggHSTXS.SetPointEYhigh(ggHParameterIndex,parameters_STXS[ggHParameters[ggHParameterIndex]]['SMXS']*parameters_STXS[ggHParameters[ggHParameterIndex]]['uncert_up'])
     ggHSTXS.SetMarkerColor(parameters_STXS[ggHParameters[ggHParameterIndex]]['color'])
@@ -276,7 +351,7 @@ ggHSTXS.SetLineWidth(3)
 
 qqHSTXS = ROOT.TGraphAsymmErrors(len(qqHParameters))
 for qqHParameterIndex in range(len(qqHParameters)):
-    qqHSTXS.SetPoint(qqHParameterIndex,qqHParameterIndex+3.5+len(ggHParameters),parameters_STXS[qqHParameters[qqHParameterIndex]]['SMXS']*parameters_STXS[qqHParameters[qqHParameterIndex]]['mu_value'])
+    qqHSTXS.SetPoint(qqHParameterIndex,qqHParameterIndex+4.5+len(ggHParameters),parameters_STXS[qqHParameters[qqHParameterIndex]]['SMXS']*parameters_STXS[qqHParameters[qqHParameterIndex]]['mu_value'])
     qqHSTXS.SetPointEYlow(qqHParameterIndex,parameters_STXS[qqHParameters[qqHParameterIndex]]['SMXS']*parameters_STXS[qqHParameters[qqHParameterIndex]]['uncert_down'])
     qqHSTXS.SetPointEYhigh(qqHParameterIndex,parameters_STXS[qqHParameters[qqHParameterIndex]]['SMXS']*parameters_STXS[qqHParameters[qqHParameterIndex]]['uncert_up'])
     qqHSTXS.SetMarkerColor(parameters_STXS[qqHParameters[qqHParameterIndex]]['color'])
@@ -284,12 +359,24 @@ for qqHParameterIndex in range(len(qqHParameters)):
 qqHSTXS.SetMarkerStyle(21)
 qqHSTXS.SetLineWidth(3)
 
+VHSTXS = ROOT.TGraphAsymmErrors(len(VHParameters))
+for VHParameterIndex in range(len(VHParameters)):
+    VHSTXS.SetPoint(VHParameterIndex,VHParameterIndex+4.5+len(ggHParameters)+len(qqHParameters),parameters_STXS[VHParameters[VHParameterIndex]]['SMXS']*parameters_STXS[VHParameters[VHParameterIndex]]['mu_value'])
+    VHSTXS.SetPointEYlow(VHParameterIndex,parameters_STXS[VHParameters[VHParameterIndex]]['SMXS']*parameters_STXS[VHParameters[VHParameterIndex]]['uncert_down'])
+    VHSTXS.SetPointEYhigh(VHParameterIndex,parameters_STXS[VHParameters[VHParameterIndex]]['SMXS']*parameters_STXS[VHParameters[VHParameterIndex]]['uncert_up'])
+    VHSTXS.SetMarkerColor(parameters_STXS[VHParameters[VHParameterIndex]]['color'])
+    VHSTXS.SetLineColor(parameters_STXS[VHParameters[VHParameterIndex]]['color'])
+VHSTXS.SetMarkerStyle(21)
+VHSTXS.SetLineWidth(3)
+
 overallXSGraph = ROOT.TMultiGraph()
 overallXSGraph.Add(inclusiveGraph)
 overallXSGraph.Add(ggHGraph)
 overallXSGraph.Add(qqHGraph)
+overallXSGraph.Add(VHGraph)
 overallXSGraph.Add(ggHSTXS)
 overallXSGraph.Add(qqHSTXS)
+overallXSGraph.Add(VHSTXS)
 
 SMXSErrorHisto = ROOT.TGraphAsymmErrors(len(parameterOrder))
 for parameterIndex in range(len(parameters_STXS)):
@@ -329,9 +416,18 @@ qqHRatioGraph.SetLineColor(parameters_STXS['r_qqH']['color'])
 qqHRatioGraph.SetMarkerStyle(21)
 qqHRatioGraph.SetLineWidth(3)
 
+VHRatioGraph = ROOT.TGraphAsymmErrors(1)
+VHRatioGraph.SetPoint(0,3.5,parameters_STXS['r_VH']['mu_value'])
+VHRatioGraph.SetPointEYlow(0,parameters_STXS['r_VH']['uncert_down'])
+VHRatioGraph.SetPointEYhigh(0,parameters_STXS['r_VH']['uncert_up'])
+VHRatioGraph.SetMarkerColor(parameters_STXS['r_VH']['color'])
+VHRatioGraph.SetLineColor(parameters_STXS['r_VH']['color'])
+VHRatioGraph.SetMarkerStyle(21)
+VHRatioGraph.SetLineWidth(3)
+
 ggHRatioSTXS = ROOT.TGraphAsymmErrors(len(ggHParameters))
 for ggHParameterIndex in range(len(ggHParameters)):
-    ggHRatioSTXS.SetPoint(ggHParameterIndex,ggHParameterIndex+3.5,parameters_STXS[ggHParameters[ggHParameterIndex]]['mu_value'])
+    ggHRatioSTXS.SetPoint(ggHParameterIndex,ggHParameterIndex+4.5,parameters_STXS[ggHParameters[ggHParameterIndex]]['mu_value'])
     ggHRatioSTXS.SetPointEYlow(ggHParameterIndex,parameters_STXS[ggHParameters[ggHParameterIndex]]['uncert_down'])
     ggHRatioSTXS.SetPointEYhigh(ggHParameterIndex,parameters_STXS[ggHParameters[ggHParameterIndex]]['uncert_up'])
     ggHRatioSTXS.SetMarkerColor(parameters_STXS[ggHParameters[ggHParameterIndex]]['color'])
@@ -341,7 +437,7 @@ ggHRatioSTXS.SetLineWidth(3)
 
 qqHRatioSTXS = ROOT.TGraphAsymmErrors(len(qqHParameters))
 for qqHParameterIndex in range(len(qqHParameters)):
-    qqHRatioSTXS.SetPoint(qqHParameterIndex,qqHParameterIndex+3.5+len(ggHParameters),parameters_STXS[qqHParameters[qqHParameterIndex]]['mu_value'])
+    qqHRatioSTXS.SetPoint(qqHParameterIndex,qqHParameterIndex+4.5+len(ggHParameters),parameters_STXS[qqHParameters[qqHParameterIndex]]['mu_value'])
     qqHRatioSTXS.SetPointEYlow(qqHParameterIndex,parameters_STXS[qqHParameters[qqHParameterIndex]]['uncert_down'])
     qqHRatioSTXS.SetPointEYhigh(qqHParameterIndex,parameters_STXS[qqHParameters[qqHParameterIndex]]['uncert_up'])
     qqHRatioSTXS.SetMarkerColor(parameters_STXS[qqHParameters[qqHParameterIndex]]['color'])
@@ -349,12 +445,24 @@ for qqHParameterIndex in range(len(qqHParameters)):
 qqHRatioSTXS.SetMarkerStyle(21)
 qqHRatioSTXS.SetLineWidth(3)
 
+VHRatioSTXS = ROOT.TGraphAsymmErrors(len(VHParameters))
+for VHParameterIndex in range(len(VHParameters)):
+    VHRatioSTXS.SetPoint(VHParameterIndex,VHParameterIndex+4.5+len(ggHParameters)+len(qqHParameters),parameters_STXS[VHParameters[VHParameterIndex]]['mu_value'])
+    VHRatioSTXS.SetPointEYlow(VHParameterIndex,parameters_STXS[VHParameters[VHParameterIndex]]['uncert_down'])
+    VHRatioSTXS.SetPointEYhigh(VHParameterIndex,parameters_STXS[VHParameters[VHParameterIndex]]['uncert_up'])
+    VHRatioSTXS.SetMarkerColor(parameters_STXS[VHParameters[VHParameterIndex]]['color'])
+    VHRatioSTXS.SetLineColor(parameters_STXS[VHParameters[VHParameterIndex]]['color'])
+VHRatioSTXS.SetMarkerStyle(21)
+VHRatioSTXS.SetLineWidth(3)
+
 ratioGraph = ROOT.TMultiGraph()
 ratioGraph.Add(inclusiveRatioGraph)
 ratioGraph.Add(ggHRatioGraph)
 ratioGraph.Add(qqHRatioGraph)
+ratioGraph.Add(VHRatioGraph)
 ratioGraph.Add(ggHRatioSTXS)
 ratioGraph.Add(qqHRatioSTXS)
+ratioGraph.Add(VHRatioSTXS)
 
 SMXSRatioErrorHisto = ROOT.TGraphAsymmErrors(len(parameterOrder))
 for parameterIndex in range(len(parameters_STXS)):
@@ -375,7 +483,7 @@ for parameterIndex in range(len(parameterOrder)):
 plotPad.cd()
 plotGridHisto.Draw()
 plotGridHisto.SetMaximum(20000)
-plotGridHisto.SetMinimum(5)
+plotGridHisto.SetMinimum(0.5)
 plotGridHisto.GetYaxis().SetTitle("#sigmaB (fb)")
 plotGridHisto.GetYaxis().SetTitleOffset(0.6)
 plotGridHisto.GetYaxis().SetTickLength(0.01)
@@ -427,8 +535,8 @@ cmsLatex.SetNDC(True)
 cmsLatex.SetTextFont(61)
 cmsLatex.SetTextAlign(11)
 cmsLatex.DrawLatex(0.1,0.92,"CMS")
-cmsLatex.SetTextFont(52)
-cmsLatex.DrawLatex(0.1+0.09,0.92,"Preliminary")
+#cmsLatex.SetTextFont(52)
+#cmsLatex.DrawLatex(0.1+0.09,0.92,"Preliminary")
 
 cmsLatex.SetTextAlign(31)
 cmsLatex.SetTextFont(42)

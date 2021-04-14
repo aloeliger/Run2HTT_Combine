@@ -12,9 +12,9 @@ def roundToSigDigits(number,sigDigits):
 parameters_STXS = {
     'r':{
         'SMXS': 3422.279, #higgs XS is 54.257 pb, scale to fb, and use tau BR
-        'mu_value':0.865, #+0.865   -0.108/+0.115
-        'uncert_down':0.108,
-        'uncert_up':0.115,
+        'mu_value':1.006, #+0.865   -0.108/+0.115
+        'uncert_down':0.101,
+        'uncert_up':0.100,
         'color':ROOT.kBlack,
         'axis':'H#rightarrow#tau#tau',
         'SMXS_mu_up': 0.0503,
@@ -22,9 +22,9 @@ parameters_STXS = {
     },
     'r_ggH':{
         'SMXS': 3051.344, #ggH XS is 48.68 pb, scale to fb and use tau BR (+ggZH)
-        'mu_value':1.002, #+1.002   -0.181/+0.194
-        'uncert_down':0.181,
-        'uncert_up':0.194,
+        'mu_value':1.0088, #+1.002   -0.181/+0.194
+        'uncert_down':0.318,
+        'uncert_up':0.191,
         'color':ROOT.kAzure+7,
         'axis':'ggH#rightarrow#tau#tau',
         'SMXS_mu_up': 0.0523,
@@ -32,30 +32,29 @@ parameters_STXS = {
         },
     'r_qqH':{
         'SMXS': 328.6833, #total qqH cross section as we consider it
-        'mu_value': 0.672, #+0.672   -0.223/+0.229
-        'uncert_down': 0.223,
-        'uncert_up': 0.229,
+        'mu_value': 0.801, #+0.672   -0.223/+0.229
+        'uncert_down': 0.219,
+        'uncert_up': 0.230,
         'color':ROOT.kOrange-3,
         'axis':'qqH#rightarrow#tau#tau',
         'SMXS_mu_up': 0.0294,
         'SMXS_mu_down':0.0294,
         },
-    #UPDATE ME WITH REAL NUMBERS
     'r_VH':{
-        'SMXS':41.451,
-        'mu_value':1.0,
-        'uncert_down':1.0,
-        'uncert_up':1.0,
+        'SMXS':44.19176,
+        'mu_value':1.800,
+        'uncert_down':0.414,
+        'uncert_up':0.444,
         'color': ROOT.kGreen+1,
         'axis':'VH#rightarrow#tau#tau',
-        'SMXS_mu_up': 0.02,
-        'SMXS_mu_down': 0.02,
+        'SMXS_mu_up': 0.031,
+        'SMXS_mu_down': 0.034,
     },
     'r_ggH_0J':{
         'SMXS': 1752.942,
-        'mu_value':-0.55,
-        'uncert_down':0.452,
-        'uncert_up':0.493,
+        'mu_value':-0.339,
+        'uncert_down':0.438,
+        'uncert_up':0.437,
         'color':ROOT.kAzure+7,
         'axis':'ggH: 0 Jet',
         'SMXS_mu_up': 0.09125,
@@ -63,9 +62,9 @@ parameters_STXS = {
     },
     'r_ggH_1J_PTH_0_60':{
         'SMXS': 451.0862,
-        'mu_value':-1.676,
-        'uncert_down':1.131,
-        'uncert_up':1.150,
+        'mu_value':-0.301,
+        'uncert_down':0.983,
+        'uncert_up':0.987,
         'color':ROOT.kAzure+7,
         'axis':'ggH: 1 Jet, p_{T}^{H}[0,60]',
         'SMXS_mu_up': 0.140,
@@ -73,9 +72,9 @@ parameters_STXS = {
     },
     'r_ggH_1J_PTH_60_120':{
         'SMXS': 287.6776,
-        'mu_value':3.514,
-        'uncert_down':0.909,
-        'uncert_up':0.918,
+        'mu_value':2.663,
+        'uncert_down':0.861,
+        'uncert_up':0.854,
         'color':ROOT.kAzure+7,
         'axis':'ggH: 1 Jet, p_{T}^{H}[60,120]',
         'SMXS_mu_up': 0.142,
@@ -83,9 +82,9 @@ parameters_STXS = {
     },
     'r_ggH_1J_PTH_120_200':{
         'SMXS': 50.04276,
-        'mu_value':1.981,
-        'uncert_down':0.941,
-        'uncert_up':1.038,
+        'mu_value':1.520,
+        'uncert_down':0.952,
+        'uncert_up':0.964,
         'color':ROOT.kAzure+7,
         'axis':'ggH: 1 Jet, p_{T}^{H}[120,200]',
         'SMXS_mu_up': 0.193,
@@ -93,9 +92,9 @@ parameters_STXS = {
     },
     'r_ggH_PTH_0_200_GE2J':{
         'SMXS': 306.2587,
-        'mu_value':0.062,
-        'uncert_down':0.886,
-        'uncert_up':0.818,
+        'mu_value':-0.202,
+        'uncert_down':0.759,
+        'uncert_up':0.771,
         'color':ROOT.kAzure+7,
         'axis':'ggH: #geq 2 Jet',
         'SMXS_mu_up': 0.2296,
@@ -103,9 +102,9 @@ parameters_STXS = {
     },
     'r_ggH_PTH_200_300':{
         'SMXS': 27.51224,
-        'mu_value':0.878,
-        'uncert_down':0.892,
-        'uncert_up':0.885,
+        'mu_value':0.489,
+        'uncert_down':0.804,
+        'uncert_up':0.817,
         'color':ROOT.kAzure+7,
         'axis':'ggH: p_{T}^{H}[200,300]',
         'SMXS_mu_up': 0.41885,
@@ -113,9 +112,9 @@ parameters_STXS = {
     },
     'r_ggH_PTH_GE300':{
         'SMXS': 7.188811,
-        'mu_value':1.803,
-        'uncert_down':1.099,
-        'uncert_up':1.088,
+        'mu_value':1.029,
+        'uncert_down':1.007,
+        'uncert_up':1.026,
         'color':ROOT.kAzure+7,
         'axis':'ggH: p_{T}^{H} > 300',
         'SMXS_mu_up': 0.467,
@@ -123,9 +122,9 @@ parameters_STXS = {
     },
     'r_qqH_NONVBFTOPO':{
         'SMXS': 209.42,
-        'mu_value':1.787,
-        'uncert_down':2.460,
-        'uncert_up':2.636,
+        'mu_value':3.468,
+        'uncert_down':2.373,
+        'uncert_up':2.333,
         'color':ROOT.kOrange-3,
         'axis':'qqH: Non-VBF Topology',
         'SMXS_mu_up': 0.02919,
@@ -133,9 +132,9 @@ parameters_STXS = {
     },
     'r_qqH_GE2J_MJJ_350_700_PTH_0_200':{
         'SMXS': 34.430,
-        'mu_value':-0.55,
-        'uncert_down':1.336,
-        'uncert_up':1.331,
+        'mu_value':0.053,
+        'uncert_down':1.294,
+        'uncert_up':1.295,
         'color':ROOT.kOrange-3,
         'axis':'qqH: #geq  2 Jets, m_{jj}[350,700]',
         'SMXS_mu_up': 0.03639,
@@ -143,9 +142,9 @@ parameters_STXS = {
     },
     'r_qqH_GE2J_MJJ_GE700_PTH_0_200':{
         'SMXS': 47.481,
-        'mu_value':0.693,
-        'uncert_down':0.364,
-        'uncert_up':0.372,
+        'mu_value':0.606,
+        'uncert_down':0.362,
+        'uncert_up':0.371,
         'color':ROOT.kOrange-3,
         'axis':'qqH: #geq 2 Jets, m_{jj} > 700',
         'SMXS_mu_up': 0.0379,
@@ -153,54 +152,53 @@ parameters_STXS = {
     },    
     'r_qqH_BSM':{
         'SMXS': 9.8996,
-        'mu_value':0.648,
-        'uncert_down':0.421,
-        'uncert_up':0.444,
+        'mu_value':0.894,
+        'uncert_down':0.428,
+        'uncert_up':0.441,
         'color':ROOT.kOrange-3,
         'axis':'qqH: p_{T}^{H} > 200',
         'SMXS_mu_up': 0.03426,
         'SMXS_mu_down': 0.03426,        
     },    
-    #UPDATE ME WITH REAL NUMBERS
     'r_WH_LowPt':{
         'SMXS':20.5715,
-        'mu_value':1.0,
-        'uncert_down':1.0,
-        'uncert_up':1.0,
+        'mu_value':0.765,
+        'uncert_down':0.908,
+        'uncert_up':0.944,
         'color':ROOT.kGreen+1,
         'axis':'WH: p_{T}^{H} < 150',
-        'SMXS_mu_up': 0.025,
-        'SMXS_mu_down':0.025,
+        'SMXS_mu_up': 0.029,
+        'SMXS_mu_down':0.029,
     },
     'r_WH_HighPt':{
         'SMXS':3.30085,
-        'mu_value':1.0,
-        'uncert_down':1.0,
-        'uncert_up':1.0,
+        'mu_value':2.621,
+        'uncert_down':1.252,
+        'uncert_up':1.366,
         'color':ROOT.kGreen+1,
         'axis':'WH: p_{T}^{H} > 150',
-        'SMXS_mu_up':0.025,
-        'SMXS_mu_down':0.025,
+        'SMXS_mu_up':0.05,
+        'SMXS_mu_down':0.05,
     },
     'r_ZH_LowPt':{
-        'SMXS':10.6177,
-        'mu_value': 1.0,
-        'uncert_down':1.0,
-        'uncert_up':1.0,
+        'SMXS':11.99453,
+        'mu_value': 2.225,
+        'uncert_down':1.021,
+        'uncert_up':1.126,
         'color':ROOT.kGreen+1,
         'axis':'ZH: p_{T}^{H} < 150',
-        'SMXS_mu_up':0.025,
-        'SMXS_mu_down':0.025,
+        'SMXS_mu_up':0.061,
+        'SMXS_mu_down':0.054,
     },
     'r_ZH_HighPt':{
-        'SMXS':1.71850,
-        'mu_value':1.0,
-        'uncert_down':1.0,
-        'uncert_up':1.0,
+        'SMXS':2.55471,
+        'mu_value':3.020,
+        'uncert_down':1.266,
+        'uncert_up':1.484,
         'color':ROOT.kGreen+1,
         'axis':'ZH: p_{T}^{H} > 150',
-        'SMXS_mu_up':0.025,
-        'SMXS_mu_down':0.025,
+        'SMXS_mu_up':0.097,
+        'SMXS_mu_down':0.092,
     },
 }
 
@@ -221,7 +219,7 @@ parameterOrder = ['r','r_ggH','r_qqH','r_VH',
                   'r_ZH_LowPt',
                   'r_ZH_HighPt',]
 
-latexAlignments = [10000,10000,900, 50,
+latexAlignments = [10000,10000,900, 250,
                    5000,
                    1300,
                    2000,
@@ -233,10 +231,10 @@ latexAlignments = [10000,10000,900, 50,
                    100,
                    150,
                    25,
-                   20,
-                   20,
-                   20,
-                   20,]
+                   60,
+                   40,
+                   90,
+                   30,]
 
 ggHParameters = [
     'r_ggH_0J',
@@ -535,8 +533,8 @@ cmsLatex.SetNDC(True)
 cmsLatex.SetTextFont(61)
 cmsLatex.SetTextAlign(11)
 cmsLatex.DrawLatex(0.1,0.92,"CMS")
-#cmsLatex.SetTextFont(52)
-#cmsLatex.DrawLatex(0.1+0.09,0.92,"Preliminary")
+cmsLatex.SetTextFont(52)
+cmsLatex.DrawLatex(0.1+0.09,0.92,"Preliminary")
 
 cmsLatex.SetTextAlign(31)
 cmsLatex.SetTextFont(42)

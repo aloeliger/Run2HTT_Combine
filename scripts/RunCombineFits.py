@@ -224,7 +224,7 @@ if 'Standard' in args.analysisStyle:
                     CardFile.write("* autoMCStats 0.0\n")
                     CardFile.close()                
                 if args.SplitUncertainties:                    
-                    Splitter.FindAndTagGroups(OutputDir+"smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_.txt")
+                    Splitter.FindAndTagGroups(OutputDir+"smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_125.txt")
                 CardCombiningCommand += " "+Directory.GetName()+"_"+year+"="+OutputDir+"smh"+year+"_"+channel+"_"+str(CardNum)+"_13TeV_125.txt "
                 CardNum+=1
 

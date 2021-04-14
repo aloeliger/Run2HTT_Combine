@@ -624,11 +624,26 @@ int main(int argc, char **argv)
 	}
       else if(Input.OptionExists("-dp")||Input.OptionExists("-dn")||Input.OptionExists("-dm")||Input.OptionExists("-dljpt"))
 	{
-	  AddShapesIfNotEmpty({"CMS_rawFF_tt_qcd_0jet_2016",
-		"CMS_rawFF_tt_qcd_1jet_2016",
-		"CMS_rawFF_tt_qcd_2jet_2016",
+	  AddShapesIfNotEmpty({
+	      "CMS_rawFF_tt_qcd_0jet_barrel_2016",
+		"CMS_rawFF_tt_qcd_1jet_barrel_2016",
+		"CMS_rawFF_tt_qcd_2jet_barrel_2016",
+
+		"CMS_rawFF_tt_qcd_0jet_endcap_2016",
+		"CMS_rawFF_tt_qcd_1jet_endcap_2016",
+		"CMS_rawFF_tt_qcd_2jet_endcap_2016",
+
+		
 		"CMS_FF_closure_tau2pt_tt_qcd",
-		"CMS_FF_closure_jet1pt_tt_qcd",
+
+		//"CMS_FF_closure_jet1pt_tt_qcd",
+		"CMS_FF_closure_pth_tt_0jet_qcd",
+		"CMS_FF_closure_jet1pt_pth0to45_tt_qcd",
+		"CMS_FF_closure_jet1pt_pth45to80_tt_qcd",
+		"CMS_FF_closure_jet1pt_pth80to120_tt_qcd",
+		"CMS_FF_closure_jet1pt_pth120to200_tt_qcd",
+		"CMS_FF_closure_jet1pt_pthgt200_tt_qcd",
+
 		"CMS_FF_norm_tt_0jet_2016",
 		"CMS_FF_norm_tt_1jet_2016",
 		"CMS_FF_norm_tt_2jet_2016",

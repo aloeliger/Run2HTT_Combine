@@ -618,17 +618,33 @@ int main(int argc, char **argv)
 	}
       else if (Input.OptionExists("-dp") || Input.OptionExists("-dn") || Input.OptionExists("-dm")||Input.OptionExists("-dljpt"))
 	{      
-	  AddShapesIfNotEmpty({"CMS_rawFF_tt_qcd_0jet_2018",
-		"CMS_rawFF_tt_qcd_1jet_2018",
-		"CMS_rawFF_tt_qcd_2jet_2018",
+	  AddShapesIfNotEmpty({
+	      "CMS_rawFF_tt_qcd_0jet_barrel_2018",
+		"CMS_rawFF_tt_qcd_1jet_barrel_2018",
+		"CMS_rawFF_tt_qcd_2jet_barrel_2018",
+
+		"CMS_rawFF_tt_qcd_0jet_endcap_2018",
+		"CMS_rawFF_tt_qcd_1jet_endcap_2018",
+		"CMS_rawFF_tt_qcd_2jet_endcap_2018",
+
+		
 		"CMS_FF_closure_tau2pt_tt_qcd",
-		"CMS_FF_closure_jet1pt_tt_qcd",
+
+		//"CMS_FF_closure_jet1pt_tt_qcd",
+		"CMS_FF_closure_pth_tt_0jet_qcd",
+		"CMS_FF_closure_jet1pt_pth0to45_tt_qcd",
+		"CMS_FF_closure_jet1pt_pth45to80_tt_qcd",
+		"CMS_FF_closure_jet1pt_pth80to120_tt_qcd",
+		"CMS_FF_closure_jet1pt_pth120to200_tt_qcd",
+		"CMS_FF_closure_jet1pt_pthgt200_tt_qcd",
+
 		"CMS_FF_norm_tt_0jet_2018",
 		"CMS_FF_norm_tt_1jet_2018",
 		"CMS_FF_norm_tt_2jet_2018",
 		"CMS_FF_norm_tt_3jet_2018",
 		"CMS_FF_norm_tt_4jet_2018",
-		"CMS_FF_closure_tt_qcd_osss_2018",},
+		"CMS_FF_closure_tt_qcd_osss_2018",
+		},
 	    {"jetFakes"},
 	    &cb,
 	    1.00,

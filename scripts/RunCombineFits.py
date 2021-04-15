@@ -483,12 +483,12 @@ if args.RunSTXS:
         PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/WH_lep_PTV_GT250_htt.*:r_WH_PTH_GT_150[1,-25,25]' "
     if 'ZH' in args.analysisStyle:
         AuxMergedSignalNames.append("ZH_PTH_LT_150")
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_0_75_htt.*:r_ZH_PTH_LT_150[1,-25,25]' "
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_75_150_htt.*:r_ZH_PTH_LT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/.*ZH_lep_PTV_0_75_htt.*:r_ZH_PTH_LT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/.*ZH_lep_PTV_75_150_htt.*:r_ZH_PTH_LT_150[1,-25,25]' "
         AuxMergedSignalNames.append("ZH_PTH_GT_150")
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_0J_htt.*:r_ZH_PTH_GT_150[1,-25,25]' "
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_150_250_GE1J_htt.*:r_ZH_PTH_GT_150[1,-25,25]' "
-        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/ZH_lep_PTV_GT250_htt.*:r_ZH_PTH_GT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/.*ZH_lep_PTV_150_250_0J_htt.*:r_ZH_PTH_GT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/.*ZH_lep_PTV_150_250_GE1J_htt.*:r_ZH_PTH_GT_150[1,-25,25]' "
+        PerAuxMergedBinWorkSpaceCommand += "--PO 'map=.*/.*ZH_lep_PTV_GT250_htt.*:r_ZH_PTH_GT_150[1,-25,25]' "
 
     PerAuxMergedBinWorkSpaceCommand += CombinedCardName+" -o "+PerAuxMergedBinName+" -m 125"
 

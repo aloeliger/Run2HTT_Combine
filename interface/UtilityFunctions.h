@@ -45,11 +45,16 @@ void AddShapesIfNotEmpty(std::vector<string> Shapes,
 	  Float_t NominalIntegral = 0.0;
 	  if (NominalHisto==NULL)
 	    {
-	      std::cout<<"\033[1;34mCheck Me?\033[0m"<<std::endl;
-	      std::cout<<"Non Existent Base Histogram: "+*it<<std::endl;
-	      std::cout<<"Directory: "<<DirectoryName<<std::endl;
-	      std::cout<<"Continuing without doing anything..."<<std::endl;
-	      continue;
+	      //check and see if a "125" version exists.
+	      NominalHisto = (TH1F*) TheDirectory->Get((*it+"125").c_str());
+	      if (NominalHisto==NULL)
+		{
+		  std::cout<<"\033[1;34mCheck Me?\033[0m"<<std::endl;
+		  std::cout<<"Non Existent Base Histogram: "+*it<<std::endl;
+		  std::cout<<"Directory: "<<DirectoryName<<std::endl;
+		  std::cout<<"Continuing without doing anything..."<<std::endl;
+		  continue;
+		}
 	    }          
 	  NominalIntegral = NominalHisto->Integral();
           TH1F* UpHisto;
@@ -63,18 +68,26 @@ void AddShapesIfNotEmpty(std::vector<string> Shapes,
 	      Float_t DownIntegral = 0.0;	     
 	      if(UpHisto==NULL)
 		{
-		  std::cout<<"\033[1;31mError!\033[0m"<<std::endl;
-		  std::cout<<"Bad Up Histogram: "+(string)(*it+"_"+*Unc_it+"Up")<<std::endl;
-		  std::cout<<"Directory: "+DirectoryName<<std::endl;
-
-		  throw;
+		  UpHisto = (TH1F*) TheDirectory->Get((*it+"125"+"_"+*Unc_it+"Up").c_str());
+		  if(UpHisto==NULL)
+		    {
+		      std::cout<<"\033[1;31mError!\033[0m"<<std::endl;
+		      std::cout<<"Bad Up Histogram: "+(string)(*it+"_"+*Unc_it+"Up")<<std::endl;
+		      std::cout<<"Directory: "+DirectoryName<<std::endl;
+		      
+		      throw;
+		    }
 		}
 	      if(DownHisto==NULL)
 		{
-		  std::cout<<"\033[1;31mError!\033[0m"<<std::endl;
-		  std::cout<<"Bad Down Histogram: "+(string)(*it+"_"+*Unc_it+"Down")<<std::endl;
-		  std::cout<<"Directory: "+DirectoryName<<std::endl;
-		  throw;
+		  DownHisto = (TH1F*) TheDirectory->Get((*it+"125"+"_"+*Unc_it+"Down").c_str());
+		  if(DownHisto==NULL)
+		    {
+		      std::cout<<"\033[1;31mError!\033[0m"<<std::endl;
+		      std::cout<<"Bad Down Histogram: "+(string)(*it+"_"+*Unc_it+"Down")<<std::endl;
+		      std::cout<<"Directory: "+DirectoryName<<std::endl;
+		      throw;
+		    }
 		}
 	      UpIntegral = UpHisto->Integral();
 	      DownIntegral = DownHisto->Integral();

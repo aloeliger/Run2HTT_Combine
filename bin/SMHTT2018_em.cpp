@@ -1030,7 +1030,7 @@ cb.cp().process({ggH_STXS}).bin({"em_0jet"}).AddSyst(cb,"pdf_Higgs_gg_ACCEPT","l
       AddShapesIfNotEmpty({"ggH_scale_2jet_lowpt"},
 			  {"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",		   
 			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",		   
-			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"
+			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt",
 			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",		   
 			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",		   
 			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"},

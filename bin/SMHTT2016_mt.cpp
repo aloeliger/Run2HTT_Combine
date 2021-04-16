@@ -1257,6 +1257,7 @@ int main(int argc, char **argv)
 			  CategoryArgs
 			  );
       */
+      std::cout<<"Adding process scale uncertainties."<<std::endl;
       AddShapesIfNotEmpty({"VH_scale"},
 			  {"WH_had_htt",
 			      "ZH_had_htt"},
@@ -1306,7 +1307,7 @@ int main(int argc, char **argv)
       AddShapesIfNotEmpty({"ggH_scale_2jet_lowpt"},
 			  {"ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",		   
 			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",		   
-			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"
+			      "ggH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt",
 			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_0_60_htt",		   
 			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_60_120_htt",		   
 			      "ggZH_PTH_0_200_GE2J_MJJ_0_350_PTH_120_200_htt"},

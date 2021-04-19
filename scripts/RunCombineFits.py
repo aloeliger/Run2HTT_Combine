@@ -51,6 +51,7 @@ parser.add_argument('--stage0CrossSection',help='Create workspaces for a stage 0
 parser.add_argument('--stage1CrossSection',help='Create workspaces for a stage 1 cross section measurements. Removes some uncertainties.',action='store_true')
 parser.add_argument('--RunInclusiveVH',help='Run using an inclusive set of VH distributions (no STXS bins)',action="store_true")
 parser.add_argument('--UseHWWSTXS',help='Run using HWW split up into its STXS components',action="store_true")
+parser.add_argument('--textCardsOnly',help='Create the text cards only and then exit.',action='store_true')
 
 print("Parsing command line arguments.")
 args = parser.parse_args() 
@@ -259,6 +260,16 @@ CardCombiningCommand+= " > "+CombinedCardName
 logging.info("Final Card Combining Command:")
 logging.info('\n\n'+CardCombiningCommand+'\n')
 os.system(CardCombiningCommand+" | tee -a "+outputLoggingFile)
+
+
+if args.textCardsOnly:
+    #move the log file into output
+    os.system('mv '+outputLoggingFile+' '+OutputDir)
+    #move anything we may have made in parallel, or that may be left over to the output
+    os.system(" mv *"+DateTag+"* "+OutputDir)
+
+    outputArea.PrintSessionInfo(DateTag)
+    exit()
 
 #per signal card workspace set up
 print("Setting up per signal workspace")

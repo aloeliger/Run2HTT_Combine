@@ -777,7 +777,7 @@ int main(int argc, char **argv)
 		"CMS_FF_closure_OSSS_mvis_mt_qcd_2016",            
 
 		//"CMS_FF_closure_pth_mt_w",
-		"CMS_FF_closure_pth_mt_0jet_w",
+		"CMS_FF_closure_pth_0jet_mt_w",
 		"CMS_FF_closure_ljpt_pth0to45_mt_w",
 		"CMS_FF_closure_ljpt_pth45to80_mt_w",
 		"CMS_FF_closure_ljpt_pth80to120_mt_w",

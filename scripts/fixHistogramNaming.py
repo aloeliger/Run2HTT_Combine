@@ -20,9 +20,8 @@ if __name__ == "__main__":
         except AttributeError:
             continue #not a directory for whatever reason
         for histogramKey in theDirectory.GetListOfKeys():
-            theHistogram = theDirectory.Get(histogramKey.GetName())
-
-            if args.toReplace in theHistogram.GetName():
+            if args.toReplace in histogramKey.GetName():
+                theHistogram = theDirectory.Get(histogramKey.GetName())
                 theHistogram.SetNameTitle(
                     theHistogram.GetName().replace(args.toReplace,args.replaceWith),
                     theHistogram.GetTitle().replace(args.toReplace,args.replaceWith)

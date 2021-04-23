@@ -86,50 +86,50 @@ ii=0
 
 myresult=["#mu","#mu_{ggH}","#mu_{qqH}","#mu_{VH}"]
 mycat=["#mu","#mu_{ggH}","#mu_{qqH}","#mu_{VH}"]
-mean=[round(0.941, 2),
+mean=[round(0.930, 2),
       round(1.015, 2),
-      round(0.638, 2),
-      round(1.790,2)]
+      round(0.639, 2),
+      round(1.799,2)]
 up=[round(0.125, 2),
-    round(0.191, 2),
-    round(0.225, 2),
-    round(0.452,2)]
-down=[round(0.116, 2),
-      round(0.173, 2),
-      round(0.217, 2),
-      round(0.416,2)]
-th_up=[round(0.074, 2),
-       round(0.128, 2),
-       round(0.099, 2),
-       round(0.087,2)]
-th_down=[round(0.066, 2),
-         round(0.104, 2),
-         round(0.097, 2),
-         round(0.059,2)]
-syst_up=[round(0.072, 2),
-         round(0.105, 2),
-         round(0.091, 2),
-         round(0.242,2)]
+    round(0.201, 2),
+    round(0.238, 2),
+    round(0.454,2)]
+down=[round(0.115, 2),
+      round(0.185, 2),
+      round(0.230, 2),
+      round(0.420,2)]
+th_up=[round(0.075, 2),
+       round(0.120, 2),
+       round(0.059, 2),
+       round(0.088,2)]
+th_down=[round(0.065, 2),
+         round(0.093, 2),
+         round(0.055, 2),
+         round(0.056,2)]
+syst_up=[round(0.071, 2),
+         round(0.126, 2),
+         round(0.135, 2),
+         round(0.245,2)]
 syst_down=[round(0.065, 2),
-           round(0.100, 2),
-           round(0.080, 2),
-           round(0.208,2)]
-stat_up=[round(0.061, 2),
+           round(0.123, 2),
+           round(0.127, 2),
+           round(0.214,2)]
+stat_up=[round(0.060, 2),
          round(0.079, 2),
          round(0.165, 2),
          round(0.364,2)]
-stat_down=[round(0.060, 2),
+stat_down=[round(0.059, 2),
            round(0.079, 2),
            round(0.162, 2),
            round(0.348,2)]
-bbb_up=[round(0.036, 2),
-        round(0.053, 2),
-        round(0.074, 2),
-        round(0.077,2)]
+bbb_up=[round(0.038, 2),
+        round(0.064, 2),
+        round(0.087, 2),
+        round(0.075,2)]
 bbb_down=[round(0.034, 2),
-          round(0.054, 2),
-          round(0.073, 2),
-          round(0.075,2)]
+          round(0.064, 2),
+          round(0.087, 2),
+          round(0.077,2)]
 
 categ=[]
 result=[]

@@ -585,6 +585,7 @@ int main(int argc, char **argv)
   cb.cp().process(JoinStr({sig_procs,{"VVL","VVT","STT","STL","ZL","ZT","TTL","TTT","ggH_hww125","qqH_hww125","WH_hww125","ZH_hww125","OutsideAcceptance"}})).AddSyst(cb, "lumi_13TeV_GS", "lnN", SystMap<>::init(1.004));
 
   cb.cp().process({"jetFakes"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_jetFakesNorm_0jet_mt_2016","lnN",SystMap<>::init(1.05));
+  cb.cp().process({"jetFakes"}).bin({"htt_PTH_mt_HighTauPt","htt_NJ_mt_HighTauPt","htt_J1PT_mt_HighTauPt"}).AddSyst(cb,"CMS_jetFakesNorm_HighTauPt_mt_2016","lnN",SystMap<>::init(1.10));
   //cb.cp().process({"jetFakes"}).bin({"mt_0jet_PTH_GE10"}).AddSyst(cb,"CMS_jetFakesNorm_0jethigh_mt_2016","lnN",SystMap<>::init(1.05));
 
   //*******************************************************

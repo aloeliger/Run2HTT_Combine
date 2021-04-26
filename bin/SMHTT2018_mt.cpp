@@ -578,6 +578,8 @@ int main(int argc, char **argv) {
   cb.cp().process({"jetFakes"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_jetFakesNorm_0jet_mt_2018","lnN",SystMap<>::init(1.05));
   //cb.cp().process({"jetFakes"}).bin({"mt_0jet_PTH_GE10"}).AddSyst(cb,"CMS_jetFakesNorm_0jethigh_mt_2018","lnN",SystMap<>::init(1.05));
 
+  cb.cp().process({"jetFakes"}).bin({"htt_PTH_mt_HighTauPt","htt_NJ_mt_HighTauPt","htt_J1PT_mt_HighTauPt"}).AddSyst(cb,"CMS_jetFakesNorm_HighTauPt_mt_2018","lnN",SystMap<>::init(1.10));
+
   //***************************************************
   //shape uncertainties
   //***************************************************

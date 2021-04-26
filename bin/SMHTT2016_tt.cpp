@@ -568,6 +568,9 @@ int main(int argc, char **argv)
   cb.cp().process({"jetFakes"}).bin({"tt_vbf_highHpT"}).AddSyst(cb,"CMS_jetFakesNorm_2jet_tt_2016","lnN",SystMap<>::init(1.05));
   cb.cp().process({"jetFakes"}).bin({"tt_vbf_lowHpT"}).AddSyst(cb,"CMS_jetFakesNorm_2jet_tt_2016","lnN",SystMap<>::init(1.05));
 
+  cb.cp().process({"jetFakes"}).bin({"htt_PTH_tt_HighTauPt","htt_NJ_tt_HighTauPt","htt_J1PT_tt_HighTauPt"}).AddSyst(cb,"CMS_jetFakesNorm_HighTauPt_tt_2016","lnN",SystMap<>::init(1.05));
+
+
 
   //**************************************************
   //shape uncertainties
@@ -637,7 +640,7 @@ int main(int argc, char **argv)
 		"CMS_FF_closure_tau2pt_tt_qcd",
 
 		//"CMS_FF_closure_jet1pt_tt_qcd",
-		"CMS_FF_closure_pth_tt_0jet_qcd",
+		//"CMS_FF_closure_pth_tt_0jet_qcd",
 		"CMS_FF_closure_jet1pt_pth0to45_tt_qcd",
 		"CMS_FF_closure_jet1pt_pth45to80_tt_qcd",
 		"CMS_FF_closure_jet1pt_pth80to120_tt_qcd",

@@ -589,6 +589,7 @@ int main(int argc, char **argv)
 
   cb.cp().process({"jetFakes"}).bin({"et_0jet"}).AddSyst(cb,"CMS_jetFakesNorm_0jetlow_et_2016","lnN",SystMap<>::init(1.05));
   //cb.cp().process({"jetFakes"}).bin({"et_0jethigh"}).AddSyst(cb,"CMS_jetFakesNorm_0jethigh_et_2016","lnN",SystMap<>::init(1.05));
+  cb.cp().process({"jetFakes"}).bin({"htt_PTH_et_HighTauPt","htt_NJ_et_HighTauPt","htt_J1PT_et_HighTauPt"}).AddSyst(cb,"CMS_jetFakesNorm_HighTauPt_et_2016","lnN",SystMap<>::init(1.10));
 
   cb.cp().process({"TTL","TTT"}).bin({"em_0jet"}).AddSyst(cb,"CMS_ttbar_njet_2016","lnN",SystMap<>::init(1.10));
   //cb.cp().process({"TTL","TTT"}).bin({"em_0jethigh"}).AddSyst(cb,"CMS_ttbar_njet_2016","lnN",SystMap<>::init(1.10));

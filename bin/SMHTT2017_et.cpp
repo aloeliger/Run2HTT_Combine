@@ -583,6 +583,7 @@ int main(int argc, char **argv)
 
   cb.cp().process({"jetFakes"}).bin({"et_0jet"}).AddSyst(cb,"CMS_jetFakesNorm_0jet_et_2017","lnN",SystMap<>::init(1.05));
   //cb.cp().process({"jetFakes"}).bin({"et_0jethigh"}).AddSyst(cb,"CMS_jetFakesNorm_0jethigh_et_2017","lnN",SystMap<>::init(1.05));
+  cb.cp().process({"jetFakes"}).bin({"htt_PTH_et_HighTauPt","htt_NJ_et_HighTauPt","htt_J1PT_et_HighTauPt"}).AddSyst(cb,"CMS_jetFakesNorm_HighTauPt_et_2017","lnN",SystMap<>::init(1.10));
 
   //**********************************************************
   //shape uncertainties

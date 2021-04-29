@@ -24,7 +24,10 @@ if __name__ == "__main__":
     for Directory in DataCardFile.GetListOfKeys():
         TheDirectory = DataCardFile.Get(Directory.GetName())
         NewDirectory = NewDataCardFile.mkdir(Directory.GetName())
-        NewDirectory.cd()
+        try:
+            NewDirectory.cd()
+        except ReferenceError: #something about this directory was not a directory
+            continue
         try:
             for Histogram in TheDirectory.GetListOfKeys():
                 TheDirectory.Get(Histogram.GetName()).Write()
@@ -34,8 +37,8 @@ if __name__ == "__main__":
                 #if a shape, add it and a copy to the new file
                 if re.search("(Up|Down)",Histogram.GetName()):                
                     #JES shapes now are decorrelated from the get-go.
-                    #don't handle deal with those.
-                    if re.search('CMS_Jet',Histogram.GetName()):
+                    #don't deal with those.
+                    if re.search('CMS_scale_j',Histogram.GetName()):
                         continue
                     #if we're trimming years, but this histogram doesn't even have a year
                     #then we don't really need to do anything.

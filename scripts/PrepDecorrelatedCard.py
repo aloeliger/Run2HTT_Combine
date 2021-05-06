@@ -23,11 +23,10 @@ if __name__ == "__main__":
 
     for Directory in DataCardFile.GetListOfKeys():
         TheDirectory = DataCardFile.Get(Directory.GetName())
-        NewDirectory = NewDataCardFile.mkdir(Directory.GetName())
-        try:
-            NewDirectory.cd()
-        except ReferenceError: #something about this directory was not a directory
+        if not type(TheDirectory) == type(ROOT.TDirectoryFile()): #if we pick up some extra stuff in the file, ignore it unless it is a directory.
             continue
+        NewDirectory = NewDataCardFile.mkdir(Directory.GetName())
+        NewDirectory.cd()
         try:
             for Histogram in TheDirectory.GetListOfKeys():
                 TheDirectory.Get(Histogram.GetName()).Write()
@@ -115,7 +114,7 @@ if __name__ == "__main__":
                     CopyHisto.SetNameTitle(NewNameTitle,NewNameTitle)
                     CopyHisto.Write()
         except AttributeError:
-            continue #whatever we grabbed wasn't a directory ignore it.
+            continue #somehow whatever we grabbed wasn't a directory ignore it.
     NewDataCardFile.Write()
     NewDataCardFile.Close()
     DataCardFile.Close()

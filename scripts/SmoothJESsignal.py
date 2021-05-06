@@ -96,7 +96,7 @@ for k1 in dirList:
          for k2 in dirList2:
 	    h2 = k2.ReadObj()
 	    h_shape=h2.Clone()
-	    if (("CMS_Jet" in k2.GetName() or "JER" in k2.GetName()) and ("ggH" in k2.GetName() or "qqH" in k2.GetName() or "TTT" in k2.GetName() or "TTL" in k2.GetName() or "VVL" in k2.GetName() or "VVT" in k2.GetName() or "STL" in k2.GetName() or "STT" in k2.GetName() or "ZL" in k2.GetName())) or (("boson_reso" in k2.GetName() or "boson_scale" in k2.GetName()) and ("ZL" in k2.GetName() or "hww" in k2.GetName())):
+	    if (("CMS_scale_j" in k2.GetName() or "JER" in k2.GetName()) and ("ggH" in k2.GetName() or "qqH" in k2.GetName() or "TTT" in k2.GetName() or "TTL" in k2.GetName() or "VVL" in k2.GetName() or "VVT" in k2.GetName() or "STL" in k2.GetName() or "STT" in k2.GetName() or "ZL" in k2.GetName())) or (("boson_reso" in k2.GetName() or "boson_scale" in k2.GetName()) and ("ZL" in k2.GetName() or "hww" in k2.GetName())):
 	      shortname=k2.GetName().split("_")[0]
 	      if shortname=="ggH" or shortname=="qqH" or shortname=="WH" or shortname=="ZH":
 		shortname=k2.GetName().split("_")[0]+"_"+k2.GetName().split("_")[1]

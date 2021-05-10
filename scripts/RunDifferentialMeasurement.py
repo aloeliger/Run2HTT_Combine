@@ -38,7 +38,7 @@ logging.basicConfig(filename=OutputDir+"DifferentialCombineHistory_"+DateTag+".l
 
 outputLoggingFile = "outputLog_"+DateTag+".txt"
 
-for year in args.years:
+for year in set(args.years):
     for channel in args.channels:
         if args.DecorrelateForMe:
             AddShapeCommand = "python scripts/PrepDecorrelatedCard.py --year "+year+" --DataCard "+os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+"_Differential_nocorrelation.root --OutputFileName "+os.environ['CMSSW_BASE']+"/src/auxiliaries/shapes/smh"+year+channel+"_Differential_correlated.root "
@@ -97,7 +97,7 @@ for year in args.years:
 #Combine all of our cards together
 CombinedCardName= OutputDir+"FinalCard_"+DateTag+".txt"
 CardCombiningCommand="combineCards.py"
-for year in args.years:
+for year in set(args.years):
     for channel in args.channels:
         #add in the autoMCstats
         nCategories = 0
@@ -384,7 +384,7 @@ if args.ComputeGOF:
     else:
         os.system(ImpactCommand+" | tee -a "+outputLoggingFile)
     
-    for year in args.years:
+    for year in set(args.years):
         for channel in args.channels:
             if channel=="mt":
                 channelTitle = "#mu#tau"

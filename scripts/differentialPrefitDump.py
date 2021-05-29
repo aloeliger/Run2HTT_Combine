@@ -439,17 +439,21 @@ for directory in categoryDirectory.GetListOfKeys():
             if category == 'LowTauPt':                
                 rebinScheme = rebinHistogram(histograms,6)
             elif category == 'IntermediateTauPt':
-                    rebinScheme = rebinHistogram(histograms,6,{1:2})
+                rebinScheme = rebinHistogram(histograms,6)
             elif category == 'HighTauPt':
                 if year == '2016' or year == '2017':
-                    rebinScheme = rebinHistogram(histograms,7,{1:3,9:2})
+                    rebinScheme = rebinHistogram(histograms,7,{1:2})
                 else:
-                    rebinScheme = rebinHistogram(histograms,7,{1:3})
+                    rebinScheme = rebinHistogram(histograms,7,{1:2})
         elif channel == 'mt':
             if category == 'LowTauPt' or category == 'IntermediateTauPt':
                 rebinScheme = rebinHistogram(histograms,6)
             elif category == 'HighTauPt':
-                rebinScheme = rebinHistogram(histograms,7,{1:2})
+                if year == '2016' or year == '2017':
+                    rebinScheme = rebinHistogram(histograms,7,{1:2})
+                else:
+                    rebinScheme = rebinHistogram(histograms,7)
+                
         elif channel == 'tt':
             if category == 'LowTauPt':
                 if year == '2016': 
@@ -467,11 +471,11 @@ for directory in categoryDirectory.GetListOfKeys():
                     rebinScheme = rebinHistogram(histograms,7,{61:4})
             elif category == 'HighTauPt':
                 if year == '2016':
-                    rebinScheme = rebinHistogram(histograms,6,{4:3,8:2,45:2,47:3})
+                    rebinScheme = rebinHistogram(histograms,6,{8:2,45:2,47:3})
                 elif year == '2017':
-                    rebinScheme = rebinHistogram(histograms,6,{1:2,44:3,49:3})
+                    rebinScheme = rebinHistogram(histograms,6,{44:3,49:3})
                 else:
-                    rebinScheme = rebinHistogram(histograms,6,{1:2,44:3})
+                    rebinScheme = rebinHistogram(histograms,6,{44:3})
         else:
             rebinScheme = rebinHistogram(histograms,7)
                 
@@ -717,7 +721,7 @@ for directory in categoryDirectory.GetListOfKeys():
     cmsLatex.SetTextAlign(31)
     cmsLatex.SetTextFont(42)
     if year == '2016':
-        luminosity = '35.9'
+        luminosity = '36.3'
     if year == '2017':
         luminosity = '41.5'
     if year == '2018':

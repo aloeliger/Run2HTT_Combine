@@ -681,13 +681,9 @@ int main(int argc, char **argv)
   //cb.cp().process({"ZL","TTL","STL","VVL"}).AddSyst(cb, "CMS_mFakeTau_2017", "lnN",SystMap<>::init(1.20));    
 
   //Luminosity Uncertainty
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZT","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_2017", "lnN", SystMap<>::init(1.020));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZT","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_XY", "lnN", SystMap<>::init(1.008));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZT","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_LS", "lnN", SystMap<>::init(1.003));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZT","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_BBD", "lnN", SystMap<>::init(1.004));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZT","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_DB", "lnN", SystMap<>::init(1.005));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZT","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_BCC", "lnN", SystMap<>::init(1.003));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZT","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_GS", "lnN", SystMap<>::init(1.001));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_2017", "lnN", SystMap<>::init(1.020));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_correlated", "lnN", SystMap<>::init(1.009));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_1718", "lnN", SystMap<>::init(1.006));
 
   cb.cp().process({"jetFakes"}).bin({"mt_0jet"}).AddSyst(cb,"CMS_jetFakesNorm_0jet_mt_2017","lnN",SystMap<>::init(1.05));
   //cb.cp().process({"jetFakes"}).bin({"mt_0jet_PTH_GE10"}).AddSyst(cb,"CMS_jetFakesNorm_0jethigh_mt_2017","lnN",SystMap<>::init(1.05));

@@ -1214,6 +1214,25 @@ int main(int argc, char **argv)
 			      TheFile,
 			      CategoryArgs);
 	}
+      /*
+      //Higgs Pt uncertainty
+      if (Input.OptionExists("-dp") || Input.OptionExists("-dn") || Input.OptionExists("-dm")||Input.OptionExists("-dljpt"))
+	{
+	  AddShapesIfNotEmpty({"CMS_HiggsPt_0_45",
+		"CMS_HiggsPt_45_80", 
+		"CMS_HiggsPt_80_120",
+		"CMS_HiggsPt_120_200",
+		"CMS_HiggsPt_200_350",
+		"CMS_HiggsPt_350_450",
+		"CMS_HiggsPt_gt450",},
+	    sig_procs,
+	    &cb,
+	    1.00,
+	    TheFile,
+	    CategoryArgs);
+	}
+      */
+
     }
   //***************************************************
   //embedded uncertainties. 

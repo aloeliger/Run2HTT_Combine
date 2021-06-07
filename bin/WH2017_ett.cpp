@@ -115,13 +115,9 @@ int main(int argc, char **argv) {
   cb.cp().process({"WH_lep_PTV_0_75_htt","WH_lep_PTV_75_150_htt","WH_lep_PTV_150_250_0J_htt","WH_lep_PTV_150_250_GE1J_htt"}).AddSyst(cb,"WH_scale_lowpt", "shape", SystMap<>::init(1.00));
   cb.cp().process({"WH_lep_PTV_GT250_htt"}).AddSyst(cb,"WH_scale_highpt", "shape", SystMap<>::init(1.00));
 
-  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_2017", "lnN", SystMap<>::init(1.020));
-  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_XY", "lnN", SystMap<>::init(1.008));
-  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_BBD", "lnN", SystMap<>::init(1.004));
-  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_DB", "lnN", SystMap<>::init(1.005));
-  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_LS", "lnN", SystMap<>::init(1.003));
-  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_BCC", "lnN", SystMap<>::init(1.003));
-  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_GS", "lnN", SystMap<>::init(1.001));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_2017","lnN", SystMap<>::init(1.020));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_correlated","lnN", SystMap<>::init(1.009));
+  cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_1718","lnN", SystMap<>::init(1.006));
 
   cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "CMS_singleeletrg_2017", "lnN", SystMap<>::init(1.02));
   cb.cp().process(JoinStr({{"TriBoson","WZ","ZZ","TTV"},sig_procs,HWW})).AddSyst(cb, "CMS_eff_e_2017", "lnN", SystMap<>::init(1.02));

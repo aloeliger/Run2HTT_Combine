@@ -693,10 +693,9 @@ cb.cp().process({ggH_STXS}).bin({"em_0jet"}).AddSyst(cb,"pdf_Higgs_gg_ACCEPT","l
   cb.cp().process({"ZL"}).AddSyst(cb,"CMS_htt_elltoellFR_2018", "lnN", SystMap<>::init(1.3));
   
   //Luminosity Uncertainty
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"W","VVL","VVT","STT","STL","ZT","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_2018", "lnN", SystMap<>::init(1.015));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"W","VVL","VVT","STT","STL","ZT","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_XY", "lnN", SystMap<>::init(1.020));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"W","VVL","VVT","STT","STL","ZT","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_LS", "lnN", SystMap<>::init(1.002));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"W","VVL","VVT","STT","STL","ZT","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_BCC", "lnN", SystMap<>::init(1.002));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"W","VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_2018", "lnN", SystMap<>::init(1.015));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"W","VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_correlated", "lnN", SystMap<>::init(1.020));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"W","VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_1718", "lnN", SystMap<>::init(1.002));
 
   cb.cp().process({"QCD"}).bin({"em_0jet"}).AddSyst(cb,"CMS_QCDsyst_0jet_2018","lnN",SystMap<>::init(1.10));
   //cb.cp().process({"QCD"}).bin({"em_0jethigh"}).AddSyst(cb,"CMS_QCDsyst_0jethigh_2018","lnN",SystMap<>::init(1.10));

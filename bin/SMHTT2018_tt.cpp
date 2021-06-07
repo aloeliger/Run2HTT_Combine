@@ -710,9 +710,9 @@ int main(int argc, char **argv)
   cb.cp().process({"ZT","ZL"}).AddSyst(cb,"CMS_htt_zjXsec", "lnN", SystMap<>::init(1.02));
   
   //Luminosity Uncertainty
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_2018", "lnN", SystMap<>::init(1.020));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_correlated", "lnN", SystMap<>::init(1.009));
-  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_1718", "lnN", SystMap<>::init(1.006));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_2018", "lnN", SystMap<>::init(1.015));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_correlated", "lnN", SystMap<>::init(1.020));
+  cb.cp().process(JoinStr({sig_procs,ggH_HWW_STXS,qqH_HWW_STXS,WH_HWW_STXS,ZH_HWW_STXS,ggZH_HWW_STXS,{"VVL","VVT","STT","STL","ZL","TTL","TTT"}})).AddSyst(cb, "lumi_13TeV_1718", "lnN", SystMap<>::init(1.002));
 
   cb.cp().process({"VVL","STL","ZL","TTL"}).AddSyst(cb, "CMS_efaketau_tt_2018", "lnN", SystMap<>::init(1.50));
 

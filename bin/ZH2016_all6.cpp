@@ -133,12 +133,8 @@ int main(int argc, char **argv)
   cb.cp().process({"ggZH_lep_PTV_150_250_GE1J_htt","ggZH_lep_PTV_150_250_GE1J_hww125"}).AddSyst(cb, "THU_ggZH_mig01", "lnN", SystMap<>::init(1.277));
 
   // Lumi uncertainties
-  cb.cp().process(JoinStr({{"Triboson","ZZ"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_2016", "lnN", SystMap<>::init(1.022));
-  cb.cp().process(JoinStr({{"Triboson","ZZ"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_XY", "lnN", SystMap<>::init(1.009));
-  cb.cp().process(JoinStr({{"Triboson","ZZ"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_BBD", "lnN", SystMap<>::init(1.004));
-  cb.cp().process(JoinStr({{"Triboson","ZZ"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_DB", "lnN", SystMap<>::init(1.005));
-  cb.cp().process(JoinStr({{"Triboson","ZZ"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_GS", "lnN", SystMap<>::init(1.004));
-
+  cb.cp().process(JoinStr({{"TriBoson","ZZ"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_2016","lnN", SystMap<>::init(1.010));
+  cb.cp().process(JoinStr({{"TriBoson","ZZ"},sig_procs,HWW})).AddSyst(cb, "lumi_13TeV_correlated","lnN", SystMap<>::init(1.006));
 
   // Trg and ID uncertainties
   cb.cp().process(JoinStr({{"Triboson","ZZ"},sig_procs,HWW})).bin({"eeet","eemt","eett"}).AddSyst(cb, "CMS_singleeletrg_2016", "lnN", SystMap<>::init(1.01));

@@ -86,50 +86,50 @@ ii=0
 
 myresult=["#mu","#mu_{ggH}","#mu_{qqH}","#mu_{VH}"]
 mycat=["#mu","#mu_{ggH}","#mu_{qqH}","#mu_{VH}"]
-mean=[round(0.930, 2),
-      round(1.015, 2),
-      round(0.639, 2),
-      round(1.799,2)]
-up=[round(0.125, 2),
-    round(0.201, 2),
+mean=[round(0.927, 2),
+      round(0.974, 2),
+      round(0.676, 2),
+      round(1.797,2)]
+up=[round(0.124, 2),
+    round(0.199, 2),
     round(0.238, 2),
-    round(0.454,2)]
+    round(0.456,2)]
 down=[round(0.115, 2),
-      round(0.185, 2),
-      round(0.230, 2),
-      round(0.420,2)]
-th_up=[round(0.075, 2),
-       round(0.120, 2),
-       round(0.059, 2),
-       round(0.088,2)]
+      round(0.182, 2),
+      round(0.231, 2),
+      round(0.421,2)]
+th_up=[round(0.074, 2),
+       round(0.117, 2),
+       round(0.060, 2),
+       round(0.116,2)]
 th_down=[round(0.065, 2),
-         round(0.093, 2),
-         round(0.055, 2),
-         round(0.056,2)]
+         round(0.090, 2),
+         round(0.056, 2),
+         round(0.072,2)]
 syst_up=[round(0.071, 2),
          round(0.126, 2),
-         round(0.135, 2),
-         round(0.245,2)]
+         round(0.136, 2),
+         round(0.235,2)]
 syst_down=[round(0.065, 2),
-           round(0.123, 2),
-           round(0.127, 2),
-           round(0.214,2)]
+           round(0.122, 2),
+           round(0.128, 2),
+           round(0.210,2)]
 stat_up=[round(0.060, 2),
          round(0.079, 2),
          round(0.165, 2),
-         round(0.364,2)]
+         round(0.365,2)]
 stat_down=[round(0.059, 2),
            round(0.079, 2),
            round(0.162, 2),
-           round(0.348,2)]
-bbb_up=[round(0.038, 2),
+           round(0.349,2)]
+bbb_up=[round(0.036, 2),
         round(0.064, 2),
-        round(0.087, 2),
-        round(0.075,2)]
+        round(0.086, 2),
+        round(0.076,2)]
 bbb_down=[round(0.034, 2),
-          round(0.064, 2),
-          round(0.087, 2),
-          round(0.077,2)]
+          round(0.062, 2),
+          round(0.086, 2),
+          round(0.076,2)]
 
 categ=[]
 result=[]

@@ -29,6 +29,7 @@ parser.add_argument('--ComputeImpacts',help="Compute expected impacts on POIs",a
 parser.add_argument('--useRecoSignals',help="Use \"reco\" signals isntead of gen based ones in the measurement",action="store_true")
 parser.add_argument('--useFastMinimizer',help='Implements --cminDefaultMinimizerStrategy=0 in main measurements',action="store_true")
 parser.add_argument('--setParameterRanges',help='pass setParameterRanges command',default=None)
+parser.add_argument('--textCardsOnly',help='only create the text cards',action='store_true')
 
 args = parser.parse_args()
 
@@ -125,6 +126,16 @@ CardCombiningCommand+=" > "+CombinedCardName
 logging.info("Final Card Combining Command:")
 logging.info('\n\n'+CardCombiningCommand+'\n')
 os.system(CardCombiningCommand+" | tee -a "+outputLoggingFile)
+
+if args.textCardsOnly:
+    #move the log file into output
+    os.system('mv '+outputLoggingFile+' '+OutputDir)
+    #move anything we may have made in parallel, or that may be left over to the output
+    os.system(" mv *"+DateTag+"* "+OutputDir)
+
+    outputArea.PrintSessionInfo(DateTag)
+
+    exit()
 
 #Okay, at this point, we now diverge significantly from the normal analysis
 #we have a pretty precise way we need to set up cards to get the overall signal extraction right

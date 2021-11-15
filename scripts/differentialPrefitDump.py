@@ -236,6 +236,8 @@ parser.add_argument('--lowerPad',nargs='?',choices=['ratio','signal'],help='Choo
 parser.add_argument('--drawChannel',nargs='?',choices=['em','et','mt','tt'],help='Choose channel to be drawn')
 parser.add_argument('--drawYear',nargs='?',choices=['2016','2017','2018'],help='Choose the year to be drawn')
 parser.add_argument('--drawCategory',nargs='?',choices=['LowTauPt','IntermediateTauPt','HighTauPt'],help='choose the category to be drawn')
+parser.add_argument('--drawPreliminary',action='store_true',help='Draw the \"preliminary\" latex in the plot')
+parser.add_argument('--drawSupplementary',action='store_true',help='Draw the \"Supplementary\" latex in the plot')
 
 args = parser.parse_args()
 theFile = ROOT.TFile(args.theFile)
@@ -715,8 +717,13 @@ for directory in categoryDirectory.GetListOfKeys():
     cmsLatex.SetTextFont(61)
     cmsLatex.SetTextAlign(11)
     cmsLatex.DrawLatex(0.05,0.92,"CMS")
-    cmsLatex.SetTextFont(52)
-    cmsLatex.DrawLatex(0.05+0.035,0.92,"Preliminary")
+    if args.drawPreliminary:
+        cmsLatex.SetTextFont(52)
+        cmsLatex.DrawLatex(0.05+0.035,0.92,"Preliminary")
+    if args.drawSupplementary:
+        cmsLatex.SetTextFont(52)
+        cmsLatex.DrawLatex(0.05+0.035,0.92,"Supplementary")
+
 
     cmsLatex.SetTextAlign(31)
     cmsLatex.SetTextFont(42)
